@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lokesh MM - Premium Portfolio</title>
+    <style>
+        /* CSS VARIABLES FOR HIGH-END GLASSMORPHISM NEON THEME */
+        :root {
+            --bg-base: #030712;
+            --panel-bg: rgba(17, 24, 39, 0.45);
+            --panel-border: rgba(255, 255, 255, 0.06);
+            --panel-border-hover: rgba(45, 212, 191, 0.4);
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            
+            --neon-teal: #2dd4bf;
+            --neon-cyan: #22d3ee;
+            --neon-blue: #3b82f6;
+            --neon-purple: #a855f7;
+            
+            --glow-teal: rgba(45, 212, 191, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            selection-background-color: var(--neon-teal);
+            selection-color: var(--bg-base);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* BACKGROUND GLOW DECORATIONS */
+        .bg-glow-1 {
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .bg-glow-2 {
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.06) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* NAVIGATION BAR */
+        header {
+            border-bottom: 1px solid var(--panel-border);
+            background: rgba(3, 7, 18, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .header-logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(90deg, var(--neon-teal), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-teal);
+        }
+
+        /* HERO PROFILE SECTION */
+        .hero-section {
+            max-width: 1050px;
+            margin: 60px auto 20px auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap-reverse;
+        }
+
+        .hero-text {
+            flex: 1 1 500px;
+        }
+
+        .hero-text h1 {
+            margin: 0;
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(90deg, var(--neon-teal), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-tag {
+            color: var(--neon-cyan);
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .hero-desc {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 16px 0 28px 0;
+            max-width: 600px;
+        }
+
+        .profile-container {
+            flex: 0 0 240px;
+            margin: 0 auto;
+        }
+
+        .profile-frame {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--neon-teal), var(--neon-purple));
+            box-shadow: 0 0 30px rgba(45, 212, 191, 0.2);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #1f2937;
+        }
+
+        /* CONTACT QUICK BADGES */
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .contact-pill {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            padding: 10px 18px;
+            border-radius: 30px;
+            color: var(--text-primary);
+            font-size: 14px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(8px);
+            transition: all 0.2s ease;
+        }
+
+        .contact-pill:hover {
+            border-color: var(--neon-teal);
+            background: rgba(45, 212, 191, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* CONTAINER AND MAIN STRUCTURAL GRID */
+        main {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 40px 24px 80px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 72px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 28px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 12px;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* PREMIUM APPLIED CLASS GLASS CARD */
+        .glass-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 16px;
+            padding: 28px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: var(--panel-border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px var(--glow-teal);
+        }
+
+        .card-heading {
+            color: var(--neon-teal);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0 0 16px 0;
+        }
+
+        .badge-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+
+        /* TIMELINE SYSTEM */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .timeline-card {
+            position: relative;
+            padding-left: 32px;
+            border-left: 2px solid var(--panel-border);
+            padding-bottom: 32px;
+        }
+
+        .timeline-card:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -7px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--neon-teal);
+            box-shadow: 0 0 12px var(--neon-teal);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .timeline-title {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .timeline-title span {
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .timeline-time {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--panel-border);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: monospace;
+        }
+
+        .timeline-loc {
+            margin: 4px 0 12px 0;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .timeline-body {
+            margin: 0;
+            color: #cbd5e1;
+            font-size: 14.5px;
+            line-height: 1.6;
+        }
+
+        /* MINI GRID INTERNSHIPS */
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .mini-card {
+            background: rgba(15, 23, 42, 0.3);
+            border: 1px solid var(--panel-border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .mini-card h4 {
+            margin: 0 0 4px 0;
+            font-size: 15px;
+            color: var(--text-primary);
+        }
+
+        .mini-role {
+            color: var(--neon-teal);
+            font-size: 12px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+        }
+
+        .mini-text {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* PROJECTS EXTENSION */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+        }
+
+        .project-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .project-title {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .project-tag {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: monospace;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .project-desc {
+            margin: 0;
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .project-foot {
+            font-size: 12px;
+            font-family: monospace;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 14px;
+            margin-top: 16px;
+        }
+
+        /* EDUCATION COMPONENT */
+        .edu-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .edu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .edu-title {
+            margin: 0 0 4px 0;
+            font-size: 17px;
+            color: var(--text-primary);
+        }
+
+        .edu-sub {
+            margin: 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .cgpa {
+            display: inline-block;
+            background: rgba(45, 212, 191, 0.1);
+            color: var(--neon-teal);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 8px;
+            font-family: monospace;
+        }
+
+        .edu-meta {
+            text-align: right;
+            font-family: monospace;
+            font-size: 13px;
+        }
+
+        /* INTEGRATED QUERY BOX / CONTACT FORM */
+        .query-box {
+            max-width: 650px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--neon-teal);
+        }
+
+        textarea.form-input {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(90deg, var(--neon-teal), var(--neon-cyan));
+            border: none;
+            border-radius: 8px;
+            padding: 14px 28px;
+            color: var(--bg-base);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(45, 212, 191, 0.4);
+        }
+
+        /* FOOTER MODULE */
+        footer {
+            border-top: 1px solid var(--panel-border);
+            text-align: center;
+            padding: 48px 24px;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-family: monospace;
+        }
+
+        /* RESPONSIVE DESIGN INTERRUPTS */
+        @media (max-width: 768px) {
+            .hero-section {
+                margin: 32px auto;
+                text-align: center;
+                justify-content: center;
+            }
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            .hero-desc {
+                margin: 16px auto 24px auto;
+            }
+            .contact-row {
+                justify-content: center;
+            }
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .edu-meta {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <header>
+        <div class="header-content">
+            <div class="header-logo">Lokesh MM  Portfolio</div>
+            <nav class="nav-links">
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-text">
+            <div class="hero-tag">AI / ML & Full Stack Developer</div>
+            <h1>Hi, I am <span>Lokesh MM</span></h1>
+            <p class="hero-desc">
+                Computer Science student specialized in AI and Machine Learning. Passionate about architecting intelligence pipelines, medical computer vision frameworks, and scalable cross-platform localized web ecosystems.
+            </p>
+            <div class="contact-row">
+                <a href="mailto:lokeshmmankitha@gmail.com" class="contact-pill">✉️ lokeshmmankitha@gmail.com</a>
+                <a href="tel:+919108367516" class="contact-pill">📞 +91 9108367516</a>
+                <a href="https://www.linkedin.com/in/lokesh-m-m-ankith-010119324?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" class="contact-pill">🔗 LinkedIn</a>
+                <a href="https://github.com/Lokesh206" target="_blank" rel="noreferrer" class="contact-pill">💻 GitHub</a>
+            </div>
+        </div>
+        <div class="profile-container">
+            <div class="profile-frame">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Lokesh MM Profile" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <main>
+        
+        <section id="skills">
+            <h2 class="section-title">⚡ Technical Expertise</h2>
+            <div class="grid-cards">
+                <div class="glass-card">
+                    <h3 class="card-heading">AI & Machine Learning</h3>
+                    <div class="badge-flex">
+                        <span class="badge">Deep Learning</span>
+                        <span class="badge">ResNet-18</span>
+                        <span class="badge">Neural Networks</span>
+                        <span class="badge">PyTorch</span>
+                        <span class="badge">3D/2D Brain Imaging</span>
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <h3 class="card-heading">Web Development</h3>
+                    <div class="badge-flex">
+                        <span class="badge">Spring Boot</span>
+                        <span class="badge">Flask</span>
+                        <span class="badge">Maven</span>
+                        <span class="badge">REST APIs</span>
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <h3 class="card-heading">Programming Languages</h3>
+                    <div class="badge-flex">
+                        <span class="badge">HTML</span>
+                        <span class="badge">CSS</span>
+                        <span class="badge">Python</span>
+                        <span class="badge">Java</span>
+                        <span class="badge">SQL</span>
+                        <span class="badge">C</span>
+                        <span class="badge">C++</span>
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <h3 class="card-heading">Automation & Tools</h3>
+                    <div class="badge-flex">
+                        <span class="badge">n8n</span>
+                        <span class="badge">Git</span>
+                        <span class="badge">GitHub</span>
+                        <span class="badge">VS Code</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2 class="section-title">💼 Experience & Leadership</h2>
+            <div class="timeline">
+                
+                <div class="timeline-card">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <h3 class="timeline-title">Paytem <span>— Paytem Campus Ambassador</span></h3>
+                        <span class="timeline-time">2026 – Present</span>
+                    </div>
+                    <div class="timeline-loc">Hassan, Karnataka, India</div>
+                    <p class="timeline-body">
+                        Driving strategic regional student engagement programs, deploying targeted promotional channels, and cultivating digital payment awareness structures across institutional loops.
+                    </p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-dot" style="background: var(--neon-cyan); box-shadow: 0 0 12px var(--neon-cyan);"></div>
+                    <div class="timeline-header">
+                        <h3 class="timeline-title">Campus Mantri (Campus Lead) <span>— GeeksforGeeks</span></h3>
+                        <span class="timeline-time">Jan 2026 – Present</span>
+                    </div>
+                    <div class="timeline-loc">Hassan, IN</div>
+                    <p class="timeline-body">
+                        Serving as the official campus lead to bootstrap collaborative engineering cultures. Organizing technical bootcamps, managing regional coding contests, and streaming foundational educational tracks.
+                    </p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-dot" style="background: var(--neon-blue); box-shadow: 0 0 12px var(--neon-blue);"></div>
+                    <div class="timeline-header">
+                        <h3 class="timeline-title">Google Student Ambassador (GSA) <span>— Campus Lead</span></h3>
+                        <span class="timeline-time">Jan 2026 – Present</span>
+                    </div>
+                    <div class="timeline-loc">Hassan, IN // Ambassador ID: 2941</div>
+                    <p class="timeline-body">
+                        Orchestrating applied developer workshops and structural skill-building initiatives designed around containerized tools and cloud infrastructure components.
+                    </p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="timeline-dot" style="background: var(--neon-purple); box-shadow: 0 0 12px var(--neon-purple);"></div>
+                    <div class="timeline-header">
+                        <h3 class="timeline-title">AI Research Intern <span>— Bharat Unnati Fellowship</span></h3>
+                        <span class="timeline-time">Jan 2026 – May 2026</span>
+                    </div>
+                    <div class="timeline-loc">Remote</div>
+                    <p class="timeline-body">
+                        Programmed scalable convolutional neural networks and optimized localized deep learning parameters for efficient deployment in runtime pipelines.
+                    </p>
+                </div>
+
+            </div>
+
+            <h4 class="additional-heading">Additional Professional Internships</h4>
+            <div class="mini-grid">
+                <div class="mini-card">
+                    <h4>Cognifyz Technologies</h4>
+                    <div class="mini-role">Machine Learning Intern</div>
+                    <p class="mini-text">Engineered diagnostic prediction systems applying advanced data processing and statistical evaluation mechanisms.</p>
+                </div>
+                <div class="mini-card">
+                    <h4>Saiket Systems</h4>
+                    <div class="mini-role">Full Stack Intern</div>
+                    <p class="mini-text">Designed presentation logic layers and connected secure backend REST architecture points across web engines.</p>
+                </div>
+                <div class="mini-card">
+                    <h4>CodeAlpha</h4>
+                    <div class="mini-role">Python Programming Intern</div>
+                    <p class="mini-text">Constructed systemic background processing mechanisms and automated structural data extraction scripting assets.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">🚀 Featured Projects</h2>
+            <div class="grid-cards">
+                
+                <div class="glass-card project-card">
+                    <div>
+                        <div class="project-title-row">
+                            <h3 class="project-title">AI Health & Nutrition Monitor</h3>
+                            <span class="project-tag" style="background: rgba(34, 211, 238, 0.1); color: var(--neon-cyan);">Full-Stack</span>
+                        </div>
+                        <p class="project-desc">Ecosystem built to monitor caloric profiles and tracking trends over structural baseline weight metrics. Features an analytical tracking engine to dynamically modify dietary and activity outputs.</p>
+                    </div>
+                    <div class="project-foot">Python • Nutrition API • Web Tech</div>
+                </div>
+
+                <div class="glass-card project-card">
+                    <div>
+                        <div class="project-title-row">
+                            <h3 class="project-title">Brain Tumor Segmentation Engine</h3>
+                            <span class="project-tag" style="background: rgba(45, 212, 191, 0.1); color: var(--neon-teal);">Computer Vision</span>
+                        </div>
+                        <p class="project-desc">Architected a deep learning platform designed to map raw MRI datasets, isolating spatial tissue abnormalities through high-fidelity computer vision modeling layers.</p>
+                    </div>
+                    <div class="project-foot">Python • PyTorch • ResNet-18</div>
+                </div>
+
+                <div class="glass-card project-card">
+                    <div>
+                        <div class="project-title-row">
+                            <h3 class="project-title">AI Precision Agriculture Platform</h3>
+                            <span class="project-tag" style="background: rgba(45, 212, 191, 0.1); color: var(--neon-teal);">Deep Learning</span>
+                        </div>
+                        <p class="project-desc">End-to-end plant classification and anomaly identification app supplying automated visual diagnostic support alongside localized analytics.</p>
+                    </div>
+                    <div class="project-foot">Python • Flask • Deep Learning</div>
+                </div>
+
+                <div class="glass-card project-card">
+                    <div>
+                        <div class="project-title-row">
+                            <h3 class="project-title">Smart Transport Platform for Farmers</h3>
+                            <span class="project-tag" style="background: rgba(168, 85, 247, 0.1); color: var(--neon-purple);">Localization</span>
+                        </div>
+                        <p class="project-desc">Wired a localized dual-language (Kannada / English) logistics engine matching rural crop yields directly with verified logistics networks cleanly.</p>
+                    </div>
+                    <div class="project-foot">Web Tech • SQL • Localization</div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="education">
+            <h2 class="section-title">🎓 Academic History</h2>
+            <div class="glass-card edu-flex">
+                
+                <div class="edu-item">
+                    <div>
+                        <h3 class="edu-title">Malnad College of Engineering</h3>
+                        <p class="edu-sub">B.E. in Computer Science (Artificial Intelligence & Machine Learning)</p>
+                        <div class="cgpa">Current CGPA: 8.4</div>
+                    </div>
+                    <div class="edu-meta">
+                        <div style="color: var(--text-primary);">Hassan, Karnataka</div>
+                        <div style="color: var(--text-muted); margin-top: 4px;">2023 – Present</div>
+                    </div>
+                </div>
+                
+                <div style="border-top: 1px solid rgba(255, 255, 255, 0.05); margin: 8px 0;"></div>
+
+                <div class="edu-item">
+                    <div>
+                        <h3 class="edu-title">Vijaya Vittala College</h3>
+                        <p class="edu-sub">Class XII (PUC) — Science Stream</p>
+                        <div class="cgpa" style="background: rgba(52, 211, 153, 0.1); color: #34d399;">Agg: 94%</div>
+                    </div>
+                    <div class="edu-meta">
+                        <div style="color: var(--text-primary);">Mysore, Karnataka</div>
+                        <div style="color: var(--text-muted); margin-top: 4px;">2021 – 2023</div>
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid rgba(255, 255, 255, 0.05); margin: 8px 0;"></div>
+
+                <div class="edu-item">
+                    <div>
+                        <h3 class="edu-title">Navodaya Junior College</h3>
+                        <p class="edu-sub">Class X (SSLC)</p>
+                        <div class="cgpa" style="background: rgba(52, 211, 153, 0.1); color: #34d399;">Agg: 96%</div>
+                    </div>
+                    <div class="edu-meta">
+                        <div style="color: var(--text-primary);">Channarayapatna, Karnataka</div>
+                        <div style="color: var(--text-muted); margin-top: 4px;">Passed 2021</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="split-box-container">
+            <div class="glass-card split-box">
+                <h3 style="margin: 0 0 16px 0; font-size: 16px; color: var(--text-primary);">🏆 Key Accomplishments</h3>
+                <ul style="padding-left: 16px; margin: 0; color: var(--text-secondary); font-size: 14.5px; display: flex; flex-direction: column; gap: 10px; line-height: 1.5;">
+                    <li>Internal Finalist at <strong>Smart India Hackathon (SIH 4.0), 2025</strong></li>
+                    <li>NCC A-Certificate Certified Representative</li>
+                </ul>
+            </div>
+            <div class="glass-card split-box">
+                <h3 style="margin: 0 0 16px 0; font-size: 16px; color: var(--text-primary);">🌐 Languages Fluency</h3>
+                <div class="badge-flex" style="margin-top: 12px;">
+                    <span class="badge" style="border-radius: 20px;">Kannada (Native)</span>
+                    <span class="badge" style="border-radius: 20px;">English (Professional)</span>
+                    <span class="badge" style="border-radius: 20px;">Hindi (Conversational)</span>
+                </div>
+            </div>
+        </div>
+
+        <section id="contact">
+            <h2 class="section-title">✉️ Let's Connect</h2>
+            <div class="glass-card query-box">
+                <form action="#" method="POST" onsubmit="alert('Thank you for reaching out, Lokesh will get back to you shortly!'); return false;">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-input" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-input" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message / Inquiry Details</label>
+                        <textarea id="message" class="form-input" placeholder="Hi Lokesh, I would love to collaborate on a new project..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Inquiry Securely</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Lokesh MM. Built using standalone Glassmorphic Engineering standards.
+    </footer>
+
+</body>
+</html>
