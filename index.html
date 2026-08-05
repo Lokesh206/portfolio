@@ -26,8 +26,6 @@
 
         * {
             box-sizing: border-box;
-            selection-background-color: var(--neon-teal);
-            selection-color: var(--bg-base);
         }
 
         body {
@@ -90,7 +88,7 @@
             letter-spacing: -0.5px;
             background: linear-gradient(90deg, var(--neon-teal), var(--neon-cyan));
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-text-fillColor: transparent;
         }
 
         .nav-links {
@@ -136,7 +134,7 @@
         .hero-text h1 span {
             background: linear-gradient(90deg, var(--neon-teal), var(--neon-cyan));
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-text-fillColor: transparent;
         }
 
         .hero-tag {
@@ -182,7 +180,7 @@
         .contact-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 12px;
             margin-top: 24px;
         }
 
@@ -207,7 +205,7 @@
             transform: translateY(-2px);
         }
 
-        /* CONTAINER AND MAIN STRUCTURAL GRID */
+        /* MAIN STRUCTURAL SYSTEM */
         main {
             max-width: 1050px;
             margin: 0 auto;
@@ -234,7 +232,6 @@
             gap: 20px;
         }
 
-        /* PREMIUM APPLIED CLASS GLASS CARD */
         .glass-card {
             background: var(--panel-bg);
             border: 1px solid var(--panel-border);
@@ -343,7 +340,7 @@
         }
 
         .timeline-body {
-            margin: 0;
+            margin: 0 0 6px 0;
             color: #cbd5e1;
             font-size: 14.5px;
             line-height: 1.6;
@@ -432,7 +429,7 @@
             margin-top: 16px;
         }
 
-        /* EDUCATION COMPONENT */
+        /* EDUCATION MODULE */
         .edu-flex {
             display: flex;
             flex-direction: column;
@@ -477,7 +474,7 @@
             font-size: 13px;
         }
 
-        /* INTEGRATED QUERY BOX / CONTACT FORM */
+        /* INTEGRATED QUERY SYSTEM */
         .query-box {
             max-width: 650px;
             width: 100%;
@@ -538,7 +535,17 @@
             box-shadow: 0 4px 20px rgba(45, 212, 191, 0.4);
         }
 
-        /* FOOTER MODULE */
+        .split-box-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .split-box {
+            flex: 1 1 280px;
+        }
+
         footer {
             border-top: 1px solid var(--panel-border);
             text-align: center;
@@ -548,7 +555,6 @@
             font-family: monospace;
         }
 
-        /* RESPONSIVE DESIGN INTERRUPTS */
         @media (max-width: 768px) {
             .hero-section {
                 margin: 32px auto;
@@ -579,9 +585,10 @@
     <div class="bg-glow-1"></div>
     <div class="bg-glow-2"></div>
 
+    <!-- HEADER NAVIGATION -->
     <header>
         <div class="header-content">
-            <div class="header-logo">Lokesh MM  Portfolio</div>
+            <div class="header-logo">Lokesh MM </div>
             <nav class="nav-links">
                 <a href="#skills">Skills</a>
                 <a href="#experience">Experience</a>
@@ -591,29 +598,33 @@
         </div>
     </header>
 
+    <!-- HERO PROFILE HEADER SECTION -->
     <section class="hero-section">
         <div class="hero-text">
             <div class="hero-tag">AI / ML & Full Stack Developer</div>
             <h1>Hi, I am <span>Lokesh MM</span></h1>
             <p class="hero-desc">
-                Computer Science student specialized in AI and Machine Learning. Passionate about architecting intelligence pipelines, medical computer vision frameworks, and scalable cross-platform localized web ecosystems.
+                Computer Science undergraduate specialized in AI and Machine Learning. Passionate about architecting intelligence pipelines, computer vision frameworks, and scalable modern agricultural or systemic technical integrations.
             </p>
             <div class="contact-row">
                 <a href="mailto:lokeshmmankitha@gmail.com" class="contact-pill">✉️ lokeshmmankitha@gmail.com</a>
                 <a href="tel:+919108367516" class="contact-pill">📞 +91 9108367516</a>
-                <a href="https://www.linkedin.com/in/lokesh-m-m-ankith-010119324?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noreferrer" class="contact-pill">🔗 LinkedIn</a>
+                <a href="https://www.linkedin.com/in/lokesh-m-m-ankith-010119324" target="_blank" rel="noreferrer" class="contact-pill">🔗 LinkedIn</a>
                 <a href="https://github.com/Lokesh206" target="_blank" rel="noreferrer" class="contact-pill">💻 GitHub</a>
             </div>
         </div>
         <div class="profile-container">
             <div class="profile-frame">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Lokesh MM Profile" class="profile-img">
+                <!-- The image path was broken. I've fixed it to use a relative path. Please create an 'assets' folder and add your image as 'profile.jpeg'. I also added the required class and an alt tag for accessibility. -->
+                <img src="C:\Users\Lenovo\Desktop\project\portfolio\assets\profile.jpeg" alt="Lokesh MM" class="profile-img">
             </div>
         </div>
     </section>
 
+    <!-- MAIN PORTFOLIO BODY -->
     <main>
         
+        <!-- TECHNICAL SKILLS SECTION -->
         <section id="skills">
             <h2 class="section-title">⚡ Technical Expertise</h2>
             <div class="grid-cards">
@@ -630,9 +641,10 @@
                 <div class="glass-card">
                     <h3 class="card-heading">Web Development</h3>
                     <div class="badge-flex">
-                        <span class="badge">Spring Boot</span>
+                     
+
                         <span class="badge">Flask</span>
-                        <span class="badge">Maven</span>
+                        
                         <span class="badge">REST APIs</span>
                     </div>
                 </div>
@@ -645,7 +657,6 @@
                         <span class="badge">Java</span>
                         <span class="badge">SQL</span>
                         <span class="badge">C</span>
-                        <span class="badge">C++</span>
                     </div>
                 </div>
                 <div class="glass-card">
@@ -660,6 +671,7 @@
             </div>
         </section>
 
+        <!-- EXPERIENCE TIMELINE SECTION -->
         <section id="experience">
             <h2 class="section-title">💼 Experience & Leadership</h2>
             <div class="timeline">
@@ -667,75 +679,69 @@
                 <div class="timeline-card">
                     <div class="timeline-dot"></div>
                     <div class="timeline-header">
-                        <h3 class="timeline-title">Paytem <span>— Paytem Campus Ambassador</span></h3>
-                        <span class="timeline-time">2026 – Present</span>
+                        <h3 class="timeline-title">Paytm <span>— Brand Campus Ambassador</span></h3>
+                        <span class="timeline-time">2024 – Present</span>
                     </div>
                     <div class="timeline-loc">Hassan, Karnataka, India</div>
-                    <p class="timeline-body">
-                        Driving strategic regional student engagement programs, deploying targeted promotional channels, and cultivating digital payment awareness structures across institutional loops.
-                    </p>
+                    <p class="timeline-body">• Driving strategic regional student engagement initiatives, spreading digital financial awareness infrastructure across targeted collegiate loops.</p>
                 </div>
 
                 <div class="timeline-card">
                     <div class="timeline-dot" style="background: var(--neon-cyan); box-shadow: 0 0 12px var(--neon-cyan);"></div>
                     <div class="timeline-header">
                         <h3 class="timeline-title">Campus Mantri (Campus Lead) <span>— GeeksforGeeks</span></h3>
-                        <span class="timeline-time">Jan 2026 – Present</span>
+                        <span class="timeline-time">Jan 2024 – Present</span>
                     </div>
                     <div class="timeline-loc">Hassan, IN</div>
-                    <p class="timeline-body">
-                        Serving as the official campus lead to bootstrap collaborative engineering cultures. Organizing technical bootcamps, managing regional coding contests, and streaming foundational educational tracks.
-                    </p>
+                    <p class="timeline-body">• Serving as the official campus lead to drive student engagement and bootstrap modern coding cultures.</p>
+                    <p class="timeline-body">• Organizing regional programming events, technical bootcamps, and streaming core educational tracks.</p>
                 </div>
 
                 <div class="timeline-card">
                     <div class="timeline-dot" style="background: var(--neon-blue); box-shadow: 0 0 12px var(--neon-blue);"></div>
                     <div class="timeline-header">
                         <h3 class="timeline-title">Google Student Ambassador (GSA) <span>— Campus Lead</span></h3>
-                        <span class="timeline-time">Jan 2026 – Present</span>
+                        <span class="timeline-time">Jan 2024 – Present</span>
                     </div>
                     <div class="timeline-loc">Hassan, IN // Ambassador ID: 2941</div>
-                    <p class="timeline-body">
-                        Orchestrating applied developer workshops and structural skill-building initiatives designed around containerized tools and cloud infrastructure components.
-                    </p>
+                    <p class="timeline-body">• Orchestrating practical developer workshops and localized skill-building programs centered on modern tools.</p>
                 </div>
 
                 <div class="timeline-card">
                     <div class="timeline-dot" style="background: var(--neon-purple); box-shadow: 0 0 12px var(--neon-purple);"></div>
                     <div class="timeline-header">
                         <h3 class="timeline-title">AI Research Intern <span>— Bharat Unnati Fellowship</span></h3>
-                        <span class="timeline-time">Jan 2026 – May 2026</span>
+                        <span class="timeline-time">Jan 2024 – May 2024</span>
                     </div>
                     <div class="timeline-loc">Remote</div>
-                    <p class="timeline-body">
-                        Programmed scalable convolutional neural networks and optimized localized deep learning parameters for efficient deployment in runtime pipelines.
-                    </p>
+                    <p class="timeline-body">• Programmed scalable convolutional pipelines and optimized deep learning architectures for production inference runtime.</p>
                 </div>
 
             </div>
 
-            <h4 class="additional-heading">Additional Professional Internships</h4>
+            <h4 class="additional-heading">Additional Core Internships</h4>
             <div class="mini-grid">
                 <div class="mini-card">
                     <h4>Cognifyz Technologies</h4>
                     <div class="mini-role">Machine Learning Intern</div>
-                    <p class="mini-text">Engineered diagnostic prediction systems applying advanced data processing and statistical evaluation mechanisms.</p>
+                    <p class="mini-text">Engineered diagnostic predictive engines using advanced statistical pipelines and structured data cleaning models.</p>
                 </div>
                 <div class="mini-card">
                     <h4>Saiket Systems</h4>
                     <div class="mini-role">Full Stack Intern</div>
-                    <p class="mini-text">Designed presentation logic layers and connected secure backend REST architecture points across web engines.</p>
+                    <p class="mini-text">Drafted clean presentation layers and structured RESTful back-end logic integrations for modern web engines.</p>
                 </div>
                 <div class="mini-card">
                     <h4>CodeAlpha</h4>
                     <div class="mini-role">Python Programming Intern</div>
-                    <p class="mini-text">Constructed systemic background processing mechanisms and automated structural data extraction scripting assets.</p>
+                    <p class="mini-text">Implemented foundational structural logic, system automation tasks, and streamlined core utility scripts.</p>
                 </div>
             </div>
         </section>
 
+        <!-- PROJECTS SECTION -->
         <section id="projects">
-            <h2 class="section-title">🚀 Featured Projects</h2>
+            <h2 class="section-title">🚀 Academic & Technical Projects</h2>
             <div class="grid-cards">
                 
                 <div class="glass-card project-card">
@@ -744,18 +750,18 @@
                             <h3 class="project-title">AI Health & Nutrition Monitor</h3>
                             <span class="project-tag" style="background: rgba(34, 211, 238, 0.1); color: var(--neon-cyan);">Full-Stack</span>
                         </div>
-                        <p class="project-desc">Ecosystem built to monitor caloric profiles and tracking trends over structural baseline weight metrics. Features an analytical tracking engine to dynamically modify dietary and activity outputs.</p>
+                        <p class="project-desc">Engineered a monitoring ecosystem analyzing structural caloric, micro/macro nutrient, and live fluid intake levels. Deployed automated adjustment tracking shifts in baseline body weight metrics to instantly prescribe customized nutrition edits, workouts, and target physical activities.</p>
                     </div>
-                    <div class="project-foot">Python • Nutrition API • Web Tech</div>
+                    <div class="project-foot">Python • Nutrition API • Full-Stack</div>
                 </div>
 
                 <div class="glass-card project-card">
                     <div>
                         <div class="project-title-row">
-                            <h3 class="project-title">Brain Tumor Segmentation Engine</h3>
+                            <h3 class="project-title">Brain Disorder & Tumor Segmentation Engine</h3>
                             <span class="project-tag" style="background: rgba(45, 212, 191, 0.1); color: var(--neon-teal);">Computer Vision</span>
                         </div>
-                        <p class="project-desc">Architected a deep learning platform designed to map raw MRI datasets, isolating spatial tissue abnormalities through high-fidelity computer vision modeling layers.</p>
+                        <p class="project-desc">Architected a medical computer vision engine to process raw MRI datasets, isolating 3D/2D infection arrays through deep convolutional tracking pipelines.</p>
                     </div>
                     <div class="project-foot">Python • PyTorch • ResNet-18</div>
                 </div>
@@ -763,10 +769,10 @@
                 <div class="glass-card project-card">
                     <div>
                         <div class="project-title-row">
-                            <h3 class="project-title">AI Precision Agriculture Platform</h3>
+                            <h3 class="project-title">AI Precision Agriculture Engine</h3>
                             <span class="project-tag" style="background: rgba(45, 212, 191, 0.1); color: var(--neon-teal);">Deep Learning</span>
                         </div>
-                        <p class="project-desc">End-to-end plant classification and anomaly identification app supplying automated visual diagnostic support alongside localized analytics.</p>
+                        <p class="project-desc">Developed an end-to-end diagnosis application providing deep automated leaf classification alongside localized preventive analytics.</p>
                     </div>
                     <div class="project-foot">Python • Flask • Deep Learning</div>
                 </div>
@@ -774,17 +780,18 @@
                 <div class="glass-card project-card">
                     <div>
                         <div class="project-title-row">
-                            <h3 class="project-title">Smart Transport Platform for Farmers</h3>
-                            <span class="project-tag" style="background: rgba(168, 85, 247, 0.1); color: var(--neon-purple);">Localization</span>
+                            <h3 class="project-title">Smart Transport Logistics Platform</h3>
+                            <span class="project-tag" style="background: rgba(168, 85, 247, 0.1); color: var(--neon-purple);">Web Tech</span>
                         </div>
-                        <p class="project-desc">Wired a localized dual-language (Kannada / English) logistics engine matching rural crop yields directly with verified logistics networks cleanly.</p>
+                        <p class="project-desc">Wired a localized dual-language (Kannada/English) logistics engine linking agricultural suppliers straight to regional logistics lines.</p>
                     </div>
-                    <div class="project-foot">Web Tech • SQL • Localization</div>
+                    <div class="project-foot">Web Tech • SQL</div>
                 </div>
 
             </div>
         </section>
 
+        <!-- EDUCATION SECTION -->
         <section id="education">
             <h2 class="section-title">🎓 Academic History</h2>
             <div class="glass-card edu-flex">
@@ -792,12 +799,12 @@
                 <div class="edu-item">
                     <div>
                         <h3 class="edu-title">Malnad College of Engineering</h3>
-                        <p class="edu-sub">B.E. in Computer Science (Artificial Intelligence & Machine Learning)</p>
+                        <p class="edu-sub">B.E. in Computer Science (Artificial Intelligence & Machine Learning) — Pursuing</p>
                         <div class="cgpa">Current CGPA: 8.4</div>
                     </div>
                     <div class="edu-meta">
                         <div style="color: var(--text-primary);">Hassan, Karnataka</div>
-                        <div style="color: var(--text-muted); margin-top: 4px;">2023 – Present</div>
+                        <div style="color: var(--text-muted); margin-top: 4px;">2023 – 2027</div>
                     </div>
                 </div>
                 
@@ -806,7 +813,7 @@
                 <div class="edu-item">
                     <div>
                         <h3 class="edu-title">Vijaya Vittala College</h3>
-                        <p class="edu-sub">Class XII (PUC) — Science Stream</p>
+                        <p class="edu-sub">Class XII (PUC)</p>
                         <div class="cgpa" style="background: rgba(52, 211, 153, 0.1); color: #34d399;">Agg: 94%</div>
                     </div>
                     <div class="edu-meta">
@@ -832,40 +839,47 @@
             </div>
         </section>
 
+        <!-- ACCOMPLISHMENTS & LANGUAGES -->
         <div class="split-box-container">
             <div class="glass-card split-box">
                 <h3 style="margin: 0 0 16px 0; font-size: 16px; color: var(--text-primary);">🏆 Key Accomplishments</h3>
                 <ul style="padding-left: 16px; margin: 0; color: var(--text-secondary); font-size: 14.5px; display: flex; flex-direction: column; gap: 10px; line-height: 1.5;">
-                    <li>Internal Finalist at <strong>Smart India Hackathon (SIH 4.0), 2025</strong></li>
-                    <li>NCC A-Certificate Certified Representative</li>
+                    <li>Internal Finalist at <strong>Smart India Hackathon (SIH), 2023</strong></li>
+                    <li>NCC A-Certificate Certified Practitioner</li>
                 </ul>
             </div>
             <div class="glass-card split-box">
                 <h3 style="margin: 0 0 16px 0; font-size: 16px; color: var(--text-primary);">🌐 Languages Fluency</h3>
                 <div class="badge-flex" style="margin-top: 12px;">
-                    <span class="badge" style="border-radius: 20px;">Kannada (Native)</span>
-                    <span class="badge" style="border-radius: 20px;">English (Professional)</span>
-                    <span class="badge" style="border-radius: 20px;">Hindi (Conversational)</span>
+                    <span class="badge" style="border-radius: 20px;">Kannada</span>
+                    <span class="badge" style="border-radius: 20px;">English</span>
+                    <span class="badge" style="border-radius: 20px;">Hindi</span>
                 </div>
             </div>
         </div>
 
+        <!-- INTEGRATED FORMBOX INQUIRY FORWARDING SYSTEM -->
         <section id="contact">
             <h2 class="section-title">✉️ Let's Connect</h2>
             <div class="glass-card query-box">
-                <form action="#" method="POST" onsubmit="alert('Thank you for reaching out, Lokesh will get back to you shortly!'); return false;">
+                <!-- IMPORTANT: Replace YOUR_FORMSPREE_ID with the exact key Formspree provides you -->
+                <form action="https://formspree.io/f/mdardppa" method="POST">
                     <div class="form-group">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" class="form-input" placeholder="John Doe" required>
+                        <input type="text" id="name" name="visitor_name" class="form-input" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" class="form-input" placeholder="john@example.com" required>
+                        <input type="email" id="email" name="_replyto" class="form-input" placeholder="john@example.com" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Message / Inquiry Details</label>
-                        <textarea id="message" class="form-input" placeholder="Hi Lokesh, I would love to collaborate on a new project..." required></textarea>
+                        <textarea id="message" name="message" class="form-input" placeholder="Hi Lokesh, I would love to collaborate on a new project..." required></textarea>
                     </div>
+                    
+                    <!-- Meta Subjects configuration -->
+                    <input type="hidden" name="_subject" value="New Portfolio Inquiry Notification">
+                    
                     <button type="submit" class="submit-btn">Send Inquiry Securely</button>
                 </form>
             </div>
@@ -873,8 +887,9 @@
 
     </main>
 
+    <!-- FOOTER MODULE -->
     <footer>
-        &copy; 2026 Lokesh MM. Built using standalone Glassmorphic Engineering standards.
+        &copy; 2024 Lokesh MM.
     </footer>
 
 </body>
