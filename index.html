@@ -6,13 +6,17 @@
   <title>Lokesh M. M. | Portfolio & Resume</title>
   <style>
     :root {
-      --primary: #1e293b;
-      --secondary: #0284c7;
-      --bg: #f8fafc;
+      --bg-gradient: linear-gradient(135deg, #0b132b 0%, #1c2541 100%);
       --card-bg: #ffffff;
-      --text: #334155;
-      --text-dark: #0f172a;
+      --primary: #0b132b;
+      --accent: #00b4d8;
+      --accent-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
       --border: #e2e8f0;
+      --tag-bg: #f0f9ff;
+      --tag-border: #bae6fd;
+      --tag-text: #0284c7;
     }
 
     * {
@@ -22,15 +26,16 @@
     }
 
     body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-dark);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       line-height: 1.6;
-      padding: 2rem 1rem;
+      padding: 2.5rem 1rem;
+      min-height: 100vh;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 920px;
       margin: 0 auto;
     }
 
@@ -42,56 +47,67 @@
     }
 
     .download-btn {
-      background-color: var(--secondary);
-      color: #ffffff;
-      font-weight: 600;
+      background: var(--accent-gradient);
+      color: #0b132b;
+      font-weight: 700;
       border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
+      padding: 0.85rem 1.75rem;
+      border-radius: 50px;
       cursor: pointer;
       font-size: 0.95rem;
       text-decoration: none;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+      transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
     }
 
     .download-btn:hover {
-      background-color: #0369a1;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 242, 254, 0.45);
     }
 
-    /* Resume Container */
+    /* Main Resume Card */
     .resume-card {
       background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2.5rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
     }
 
-    /* Header */
+    /* Header Styling */
     header {
-      border-bottom: 2px solid var(--secondary);
-      padding-bottom: 1.25rem;
-      margin-bottom: 1.75rem;
+      border-bottom: 3px solid #f1f5f9;
+      padding-bottom: 1.75rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background: var(--accent-gradient);
     }
 
     h1 {
-      font-size: 2.25rem;
-      color: var(--text-dark);
+      font-size: 2.5rem;
+      color: var(--primary);
       font-weight: 800;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.03em;
       margin-bottom: 0.25rem;
       text-transform: uppercase;
     }
 
     .tagline {
-      font-size: 1rem;
-      color: var(--secondary);
+      font-size: 1.05rem;
+      color: #0284c7;
       font-weight: 600;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .contact-grid {
@@ -99,42 +115,58 @@
       flex-wrap: wrap;
       gap: 1.25rem;
       font-size: 0.875rem;
-      color: #64748b;
+      color: var(--text-muted);
     }
 
     .contact-item {
       display: flex;
       align-items: center;
       gap: 0.35rem;
-      text-decoration: none;
-      color: inherit;
     }
 
     .contact-item a {
-      color: var(--secondary);
+      color: #0284c7;
       text-decoration: none;
+      font-weight: 500;
     }
 
-    /* Sections */
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* Section Headers */
     section {
-      margin-bottom: 1.75rem;
+      margin-bottom: 2rem;
     }
 
     .section-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-dark);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.35rem;
       margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    p.bio {
+    .section-title::before {
+      content: '';
+      width: 6px;
+      height: 18px;
+      background: var(--accent-gradient);
+      border-radius: 3px;
+    }
+
+    .bio {
       font-size: 0.95rem;
-      color: var(--text);
-      text-align: justify;
+      color: #334155;
+      line-height: 1.7;
+      background: #f8fafc;
+      padding: 1.25rem;
+      border-radius: 12px;
+      border-left: 4px solid #00b4d8;
     }
 
     /* Technical Skills Table */
@@ -143,62 +175,109 @@
       border-collapse: collapse;
     }
 
+    .skills-table tr {
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .skills-table tr:last-child {
+      border-bottom: none;
+    }
+
     .skills-table td {
-      padding: 0.4rem 0;
-      vertical-align: top;
+      padding: 0.6rem 0;
+      vertical-align: middle;
       font-size: 0.925rem;
     }
 
     .skill-label {
       font-weight: 700;
-      color: var(--text-dark);
-      width: 25%;
+      color: var(--primary);
+      width: 28%;
     }
 
-    .skill-value {
-      color: var(--text);
-      width: 75%;
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      width: 72%;
     }
 
-    /* Experience & Projects */
+    .tag {
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--tag-text);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.825rem;
+      font-weight: 600;
+    }
+
+    /* Spoken Languages Box */
+    .lang-container {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .lang-badge {
+      background: #f1f5f9;
+      color: var(--primary);
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      border: 1px solid var(--border);
+    }
+
+    /* Item Blocks (Experience & Projects) */
     .item-block {
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      border-radius: 12px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .item-block:hover {
+      border-color: #00b4d8;
+      box-shadow: 0 4px 12px rgba(0, 180, 216, 0.08);
     }
 
     .item-header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: flex-start;
       margin-bottom: 0.25rem;
     }
 
     .item-title {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      color: var(--text-dark);
+      color: var(--primary);
     }
 
     .item-sub {
       font-size: 0.875rem;
-      color: var(--secondary);
+      color: #0284c7;
       font-weight: 600;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
     }
 
     .item-date {
-      font-size: 0.85rem;
-      color: #64748b;
+      font-size: 0.825rem;
+      color: var(--text-muted);
       font-weight: 500;
+      white-space: nowrap;
     }
 
     ul.bullets {
       padding-left: 1.2rem;
-      font-size: 0.925rem;
+      font-size: 0.9rem;
     }
 
     ul.bullets li {
-      margin-bottom: 0.3rem;
-      color: var(--text);
+      margin-bottom: 0.35rem;
+      color: #334155;
     }
 
     /* Education Table */
@@ -206,23 +285,37 @@
       width: 100%;
       border-collapse: collapse;
       margin-top: 0.5rem;
+      border-radius: 8px;
+      overflow: hidden;
     }
 
     .edu-table th {
       background-color: #f1f5f9;
-      color: var(--text-dark);
+      color: var(--primary);
       font-weight: 700;
       text-align: left;
-      padding: 0.5rem 0.75rem;
-      font-size: 0.875rem;
+      padding: 0.6rem 0.85rem;
+      font-size: 0.85rem;
       border: 1px solid var(--border);
     }
 
     .edu-table td {
-      padding: 0.5rem 0.75rem;
+      padding: 0.6rem 0.85rem;
       border: 1px solid var(--border);
       font-size: 0.875rem;
-      color: var(--text);
+      color: #334155;
+    }
+
+    .achievement-badge {
+      display: inline-block;
+      margin-top: 0.75rem;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #047857;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
     }
 
     /* Print Styles */
@@ -235,9 +328,14 @@
         display: none;
       }
       .resume-card {
-        border: none;
         box-shadow: none;
         padding: 0;
+        border-radius: 0;
+      }
+      .item-block {
+        border: none;
+        padding: 0;
+        margin-bottom: 1rem;
       }
     }
   </style>
@@ -246,14 +344,14 @@
 
   <div class="container">
 
-    <!-- Direct Download Button -->
+    <!-- Action Bar -->
     <div class="action-bar">
       <a href="Lokesh_MM_Resume.pdf" download="Lokesh_MM_Resume.pdf" class="download-btn">
         📥 Download Resume PDF
       </a>
     </div>
 
-    <!-- Resume Card -->
+    <!-- Resume Card Container -->
     <div class="resume-card">
 
       <!-- Header -->
@@ -273,7 +371,7 @@
       <section>
         <div class="section-title">Brief Description</div>
         <p class="bio">
-          I am a Computer Science engineering undergraduate specializing in AI & ML at Malnad College of Engineering. Serving as a Google Student Ambassador and GeeksforGeeks Campus Mantri, I focus on integrating machine learning systems and developer resources into academic workflows. My technical expertise centers on computer vision, deep learning pipelines, and full-stack web platforms, with proven experience building real-time applications for healthcare scan diagnostics, precision agriculture, and emergency response logistics.
+          I am an ambitious Computer Science engineering undergraduate specializing in AI & ML at Malnad College of Engineering. As a Google Student Ambassador and GeeksforGeeks Campus Mantri, I advocate for developer growth and technical education across campus. My domain expertise spans computer vision, deep learning pipelines, and full-stack web platforms, with a focus on building AI solutions for healthcare diagnostic imaging, precision agriculture, and emergency logistics.
         </p>
       </section>
 
@@ -283,27 +381,54 @@
         <table class="skills-table">
           <tr>
             <td class="skill-label">Programming Languages:</td>
-            <td class="skill-value">Python, SQL, C++, Java, C</td>
+            <td class="skill-tags">
+              <span class="tag">Python</span>
+              <span class="tag">SQL</span>
+              <span class="tag">C++</span>
+              <span class="tag">Java</span>
+              <span class="tag">C</span>
+            </td>
           </tr>
           <tr>
             <td class="skill-label">AI / ML & Vision:</td>
-            <td class="skill-value">PyTorch, Deep Learning, ResNet-18, Image Segmentation, Medical Scans</td>
+            <td class="skill-tags">
+              <span class="tag">PyTorch</span>
+              <span class="tag">Deep Learning</span>
+              <span class="tag">ResNet-18</span>
+              <span class="tag">Image Segmentation</span>
+              <span class="tag">Medical Scan Analysis</span>
+            </td>
           </tr>
           <tr>
             <td class="skill-label">Web & Backend:</td>
-            <td class="skill-value">Flask, Spring Boot, REST APIs, HTML5, CSS3, JavaScript</td>
+            <td class="skill-tags">
+              <span class="tag">Flask</span>
+              <span class="tag">Spring Boot</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">JavaScript</span>
+            </td>
           </tr>
           <tr>
             <td class="skill-label">Developer Tools:</td>
-            <td class="skill-value">Git, GitHub, VS Code</td>
+            <td class="skill-tags">
+              <span class="tag">Git</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">VS Code</span>
+            </td>
           </tr>
         </table>
       </section>
 
-      <!-- Languages Spoken (Separate Section) -->
+      <!-- Languages Spoken (Standalone Section) -->
       <section>
         <div class="section-title">Languages Spoken</div>
-        <p style="font-size: 0.925rem; color: var(--text);">Kannada, English, Hindi</p>
+        <div class="lang-container">
+          <span class="lang-badge">Kannada</span>
+          <span class="lang-badge">English</span>
+          <span class="lang-badge">Hindi</span>
+        </div>
       </section>
 
       <!-- Experience & Leadership -->
@@ -428,8 +553,9 @@
             </tr>
           </tbody>
         </table>
-        <div style="margin-top: 0.75rem; font-size: 0.875rem; color: var(--text);">
-          <b>Achievements & Certifications:</b> Participant, Smart India Hackathon (SIH 4.0), 2025 | Certified NCC A-Certificate
+        
+        <div class="achievement-badge">
+          🏆 Participant, Smart India Hackathon (SIH 4.0), 2025 &nbsp;|&nbsp; 🎖️ Certified NCC A-Certificate
         </div>
       </section>
 
