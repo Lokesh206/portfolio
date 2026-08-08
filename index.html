@@ -1,896 +1,670 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lokesh MM - Premium Portfolio</title>
-    <style>
-        /* CSS VARIABLES FOR HIGH-END GLASSMORPHISM NEON THEME */
-        :root {
-            --bg-base: #030712;
-            --panel-bg: rgba(17, 24, 39, 0.45);
-            --panel-border: rgba(255, 255, 255, 0.06);
-            --panel-border-hover: rgba(45, 212, 191, 0.4);
-            
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            
-            --neon-teal: #2dd4bf;
-            --neon-cyan: #22d3ee;
-            --neon-blue: #3b82f6;
-            --neon-purple: #a855f7;
-            
-            --glow-teal: rgba(45, 212, 191, 0.15);
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-base);
-            color: var(--text-primary);
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        /* BACKGROUND GLOW DECORATIONS */
-        .bg-glow-1 {
-            position: fixed;
-            top: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-        .bg-glow-2 {
-            position: fixed;
-            bottom: -10%;
-            right: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.06) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* NAVIGATION BAR */
-        header {
-            border-bottom: 1px solid var(--panel-border);
-            background: rgba(3, 7, 18, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            max-width: 1050px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .header-logo {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            background: linear-gradient(90deg, var(--neon-teal), var(--neon-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fillColor: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--neon-teal);
-        }
-
-        /* HERO PROFILE SECTION */
-        .hero-section {
-            max-width: 1050px;
-            margin: 60px auto 20px auto;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap-reverse;
-        }
-
-        .hero-text {
-            flex: 1 1 500px;
-        }
-
-        .hero-text h1 {
-            margin: 0;
-            font-size: 48px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            line-height: 1.1;
-        }
-
-        .hero-text h1 span {
-            background: linear-gradient(90deg, var(--neon-teal), var(--neon-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fillColor: transparent;
-        }
-
-        .hero-tag {
-            color: var(--neon-cyan);
-            font-size: 16px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .hero-desc {
-            color: var(--text-secondary);
-            font-size: 16px;
-            line-height: 1.6;
-            margin: 16px 0 28px 0;
-            max-width: 600px;
-        }
-
-        .profile-container {
-            flex: 0 0 240px;
-            margin: 0 auto;
-        }
-
-        .profile-frame {
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            padding: 4px;
-            background: linear-gradient(135deg, var(--neon-teal), var(--neon-purple));
-            box-shadow: 0 0 30px rgba(45, 212, 191, 0.2);
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            background-color: #1f2937;
-        }
-
-        /* CONTACT QUICK BADGES */
-        .contact-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 24px;
-        }
-
-        .contact-pill {
-            background: var(--panel-bg);
-            border: 1px solid var(--panel-border);
-            padding: 10px 18px;
-            border-radius: 30px;
-            color: var(--text-primary);
-            font-size: 14px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            backdrop-filter: blur(8px);
-            transition: all 0.2s ease;
-        }
-
-        .contact-pill:hover {
-            border-color: var(--neon-teal);
-            background: rgba(45, 212, 191, 0.05);
-            transform: translateY(-2px);
-        }
-
-        /* MAIN STRUCTURAL SYSTEM */
-        main {
-            max-width: 1050px;
-            margin: 0 auto;
-            padding: 40px 24px 80px 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 72px;
-        }
-
-        .section-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin: 0 0 28px 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-bottom: 1px solid var(--panel-border);
-            padding-bottom: 12px;
-        }
-
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .glass-card {
-            background: var(--panel-bg);
-            border: 1px solid var(--panel-border);
-            border-radius: 16px;
-            padding: 28px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .glass-card:hover {
-            border-color: var(--panel-border-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px -10px var(--glow-teal);
-        }
-
-        .card-heading {
-            color: var(--neon-teal);
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin: 0 0 16px 0;
-        }
-
-        .badge-flex {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .badge {
-            background: rgba(30, 41, 59, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 13px;
-            color: #cbd5e1;
-            font-weight: 500;
-        }
-
-        /* TIMELINE SYSTEM */
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .timeline-card {
-            position: relative;
-            padding-left: 32px;
-            border-left: 2px solid var(--panel-border);
-            padding-bottom: 32px;
-        }
-
-        .timeline-card:last-child {
-            padding-bottom: 0;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -7px;
-            top: 4px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--neon-teal);
-            box-shadow: 0 0 12px var(--neon-teal);
-        }
-
-        .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .timeline-title {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .timeline-title span {
-            font-weight: 400;
-            color: var(--text-secondary);
-        }
-
-        .timeline-time {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid var(--panel-border);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            color: var(--text-secondary);
-            font-family: monospace;
-        }
-
-        .timeline-loc {
-            margin: 4px 0 12px 0;
-            color: var(--text-muted);
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .timeline-body {
-            margin: 0 0 6px 0;
-            color: #cbd5e1;
-            font-size: 14.5px;
-            line-height: 1.6;
-        }
-
-        /* MINI GRID INTERNSHIPS */
-        .mini-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            margin-top: 28px;
-        }
-
-        .mini-card {
-            background: rgba(15, 23, 42, 0.3);
-            border: 1px solid var(--panel-border);
-            border-radius: 12px;
-            padding: 20px;
-        }
-
-        .mini-card h4 {
-            margin: 0 0 4px 0;
-            font-size: 15px;
-            color: var(--text-primary);
-        }
-
-        .mini-role {
-            color: var(--neon-teal);
-            font-size: 12px;
-            font-weight: 600;
-            margin: 0 0 8px 0;
-        }
-
-        .mini-text {
-            margin: 0;
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* PROJECTS EXTENSION */
-        .project-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 200px;
-        }
-
-        .project-title-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .project-title {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .project-tag {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-family: monospace;
-            padding: 3px 8px;
-            border-radius: 4px;
-        }
-
-        .project-desc {
-            margin: 0;
-            font-size: 13.5px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .project-foot {
-            font-size: 12px;
-            font-family: monospace;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding-top: 14px;
-            margin-top: 16px;
-        }
-
-        /* EDUCATION MODULE */
-        .edu-flex {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .edu-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .edu-title {
-            margin: 0 0 4px 0;
-            font-size: 17px;
-            color: var(--text-primary);
-        }
-
-        .edu-sub {
-            margin: 0;
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        .cgpa {
-            display: inline-block;
-            background: rgba(45, 212, 191, 0.1);
-            color: var(--neon-teal);
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-top: 8px;
-            font-family: monospace;
-        }
-
-        .edu-meta {
-            text-align: right;
-            font-family: monospace;
-            font-size: 13px;
-        }
-
-        /* INTEGRATED QUERY SYSTEM */
-        .query-box {
-            max-width: 650px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .form-input {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid var(--panel-border);
-            border-radius: 8px;
-            padding: 12px 16px;
-            color: var(--text-primary);
-            font-size: 14px;
-            font-family: inherit;
-            transition: border-color 0.2s;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--neon-teal);
-        }
-
-        textarea.form-input {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: linear-gradient(90deg, var(--neon-teal), var(--neon-cyan));
-            border: none;
-            border-radius: 8px;
-            padding: 14px 28px;
-            color: var(--bg-base);
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 20px rgba(45, 212, 191, 0.4);
-        }
-
-        .split-box-container {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .split-box {
-            flex: 1 1 280px;
-        }
-
-        footer {
-            border-top: 1px solid var(--panel-border);
-            text-align: center;
-            padding: 48px 24px;
-            color: var(--text-muted);
-            font-size: 13px;
-            font-family: monospace;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                margin: 32px auto;
-                text-align: center;
-                justify-content: center;
-            }
-            .hero-text h1 {
-                font-size: 36px;
-            }
-            .hero-desc {
-                margin: 16px auto 24px auto;
-            }
-            .contact-row {
-                justify-content: center;
-            }
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .edu-meta {
-                text-align: left;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lokesh M. M. | Portfolio & Resume</title>
+  <!-- html2pdf.js CDN for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0f1d;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent-cyan: #38bdf8;
+      --accent-purple: #c084fc;
+      --accent-emerald: #34d399;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(192, 132, 252, 0.12) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    /* Action / Download Bar */
+    .action-bar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1.5rem;
+    }
+
+    .download-btn {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      color: #0a0f1d;
+      font-weight: 700;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(56, 189, 248, 0.4);
+    }
+
+    /* Glassmorphism Cards */
+    .glass {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .glass:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #38bdf8 0%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 1.5rem auto;
+      font-weight: 500;
+    }
+
+    /* Contact Information Cards */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .contact-card {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s ease;
+    }
+
+    .contact-card:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-val {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      word-break: break-all;
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-category {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      padding: 1rem;
+      border: 1px solid var(--card-border);
+    }
+
+    .skill-category h4 {
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      color: var(--text);
+    }
+
+    /* Projects Grid */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-card {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--card-border);
+    }
+
+    .project-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .tech-badge {
+      font-size: 0.75rem;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-cyan);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .project-card ul {
+      list-style-type: none;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .project-card li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .project-card li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent-purple);
+    }
+
+    /* Experience Timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .timeline-item {
+      border-left: 2px solid var(--card-border);
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 0.3rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+    }
+
+    .role-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .role-meta {
+      font-size: 0.85rem;
+      color: var(--accent-purple);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-item ul {
+      list-style-type: none;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-item li {
+      margin-bottom: 0.4rem;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .timeline-item li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent-cyan);
+    }
+
+    /* Education */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .edu-card {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      padding: 1.2rem;
+      border: 1px solid var(--card-border);
+    }
+
+    .edu-title {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .edu-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-score {
+      font-size: 0.85rem;
+      color: var(--accent-emerald);
+      font-weight: 600;
+    }
+
+    /* Achievements */
+    .achievements {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .achievement-badge {
+      background: rgba(52, 211, 153, 0.1);
+      border: 1px solid rgba(52, 211, 153, 0.2);
+      color: var(--accent-emerald);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+
+    /* Print / PDF Specific Styling */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+      }
+
+      .action-bar {
+        display: none !important;
+      }
+
+      .glass {
+        background: none !important;
+        backdrop-filter: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin-bottom: 1.5rem !important;
+      }
+
+      h1 {
+        background: none !important;
+        -webkit-text-fill-color: #000000 !important;
+        color: #000000 !important;
+      }
+
+      .tagline, .contact-label, .edu-subtitle, .project-card ul, .timeline-item ul, p {
+        color: #333333 !important;
+      }
+
+      .contact-card, .skill-category, .project-card, .edu-card {
+        background: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+      }
+
+      .contact-val, .role-meta, .section-title, .edu-score, .project-title, .role-title {
+        color: #0f172a !important;
+      }
+
+      .tag, .tech-badge, .achievement-badge {
+        background: #e2e8f0 !important;
+        color: #0f172a !important;
+        border: 1px solid #cbd5e1 !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="bg-glow-1"></div>
-    <div class="bg-glow-2"></div>
+  <div class="container">
 
-    <!-- HEADER NAVIGATION -->
-    <header>
-        <div class="header-content">
-            <div class="header-logo">Lokesh MM </div>
-            <nav class="nav-links">
-                <a href="#skills">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </nav>
+    <!-- Action Bar / PDF Download Button -->
+    <div class="action-bar">
+      <button class="download-btn" onclick="downloadPDF()">
+        📥 Download Resume PDF
+      </button>
+    </div>
+
+    <!-- Main Printable Resume & Portfolio Content -->
+    <div id="portfolio-resume">
+
+      <!-- Header -->
+      <header class="glass">
+        <h1>Lokesh M. M.</h1>
+        <p class="tagline">Computer Science (AI & ML) Student &bull; Google Student Ambassador &bull; AI Developer</p>
+      </header>
+
+      <!-- Contact Information Section -->
+      <section class="glass">
+        <h2 class="section-title">Contact Information</h2>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-label">Location</div>
+            <div class="contact-val">Hassan, Karnataka</div>
+          </div>
+          <a href="tel:+919108367516" class="contact-card">
+            <div class="contact-label">Phone</div>
+            <div class="contact-val">+91 9108367516</div>
+          </a>
+          <a href="mailto:lokeshmmankith@gmail.com" class="contact-card">
+            <div class="contact-label">Email</div>
+            <div class="contact-val">lokeshmmankith@gmail.com</div>
+          </a>
+          <a href="https://linkedin.com/in/lokesh-m-m-ankith" target="_blank" class="contact-card">
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-val">lokesh-m-m-ankith</div>
+          </a>
+          <a href="https://github.com/Lokesh206" target="_blank" class="contact-card">
+            <div class="contact-label">GitHub</div>
+            <div class="contact-val">Lokesh206</div>
+          </a>
         </div>
-    </header>
+      </section>
 
-    <!-- HERO PROFILE HEADER SECTION -->
-    <section class="hero-section">
-        <div class="hero-text">
-            <div class="hero-tag">AI / ML & Full Stack Developer</div>
-            <h1>Hi, I am <span>Lokesh MM</span></h1>
-            <p class="hero-desc">
-                Computer Science undergraduate specialized in AI and Machine Learning. Passionate about architecting intelligence pipelines, computer vision frameworks, and scalable modern agricultural or systemic technical integrations.
-            </p>
-            <div class="contact-row">
-                <a href="mailto:lokeshmmankitha@gmail.com" class="contact-pill">✉️ lokeshmmankitha@gmail.com</a>
-                <a href="tel:+919108367516" class="contact-pill">📞 +91 9108367516</a>
-                <a href="https://www.linkedin.com/in/lokesh-m-m-ankith-010119324" target="_blank" rel="noreferrer" class="contact-pill">🔗 LinkedIn</a>
-                <a href="https://github.com/Lokesh206" target="_blank" rel="noreferrer" class="contact-pill">💻 GitHub</a>
+      <!-- Profile Summary -->
+      <section class="glass">
+        <h2 class="section-title">Profile Overview</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">
+          Computer Science (AI & ML) student, Google Student Ambassador, and GeeksforGeeks Campus Mantri with expertise in computer vision, deep learning pipelines, and full-stack web applications. Skilled in PyTorch, Flask, and REST API design, with a focus on engineering AI-driven solutions for healthcare, agriculture, and civic safety.
+        </p>
+      </section>
+
+      <!-- Technical Skills -->
+      <section class="glass">
+        <h2 class="section-title">Technical Capabilities</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h4>Languages</h4>
+            <div class="skill-tags">
+              <span class="tag">Python</span>
+              <span class="tag">SQL</span>
+              <span class="tag">C++</span>
+              <span class="tag">Java</span>
+              <span class="tag">C</span>
             </div>
-        </div>
-        <div class="profile-container">
-            <div class="profile-frame">
-                <!-- The image path was broken. I've fixed it to use a relative path. Please create an 'assets' folder and add your image as 'profile.jpeg'. I also added the required class and an alt tag for accessibility. -->
-                <img src="C:\Users\Lenovo\Desktop\project\portfolio\assets\profile.jpeg" alt="Lokesh MM" class="profile-img">
+          </div>
+          <div class="skill-category">
+            <h4>AI / ML & Vision</h4>
+            <div class="skill-tags">
+              <span class="tag">PyTorch</span>
+              <span class="tag">Deep Learning</span>
+              <span class="tag">ResNet-18</span>
+              <span class="tag">Image Segmentation</span>
+              <span class="tag">3D/2D Scan Analysis</span>
             </div>
+          </div>
+          <div class="skill-category">
+            <h4>Web & Backend</h4>
+            <div class="skill-tags">
+              <span class="tag">Flask</span>
+              <span class="tag">Spring Boot</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Maven</span>
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h4>Tools & Languages Spoken</h4>
+            <div class="skill-tags">
+              <span class="tag">Git</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">VS Code</span>
+              <span class="tag">Kannada</span>
+              <span class="tag">English</span>
+              <span class="tag">Hindi</span>
+            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- MAIN PORTFOLIO BODY -->
-    <main>
+      <!-- Key Projects -->
+      <section class="glass">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="project-grid">
+
+          <div class="project-card">
+            <div class="project-title">Brain Disorder & Tumor Segmentation Engine</div>
+            <div class="project-tech">
+              <span class="tech-badge">PyTorch</span>
+              <span class="tech-badge">ResNet-18</span>
+              <span class="tech-badge">Computer Vision</span>
+            </div>
+            <ul>
+              <li>Engineered an AI diagnostic system processing 3D/2D MRI scans using ResNet-18 neural networks in PyTorch.</li>
+              <li>Implemented deep segmentation pipelines to accurately map affected anatomical regions and pinpoint infection sites.</li>
+            </ul>
+          </div>
+
+          <div class="project-card">
+            <div class="project-title">AI Precision Agriculture Engine (Raitha Mitra AI)</div>
+            <div class="project-tech">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Flask</span>
+              <span class="tech-badge">Deep Learning</span>
+            </div>
+            <ul>
+              <li>Developed a full-stack crop disease detection platform using image classification to evaluate uploaded leaf scans.</li>
+              <li>Integrated automated diagnostic heatmap generation and actionable disease prevention recommendations for farmers.</li>
+            </ul>
+          </div>
+
+          <div class="project-card">
+            <div class="project-title">Smart Transport & Logistics Hub (Krishi Sarathi)</div>
+            <div class="project-tech">
+              <span class="tech-badge">Flask</span>
+              <span class="tech-badge">REST APIs</span>
+              <span class="tech-badge">Web Tech</span>
+            </div>
+            <ul>
+              <li>Built a bilingual (Kannada/English) web portal connecting local farmers directly with commercial transporters and traders.</li>
+              <li>Streamlined agricultural logistics by facilitating real-time route matching and secure distribution tracking.</li>
+            </ul>
+          </div>
+
+          <div class="project-card">
+            <div class="project-title">Natural Disaster Detection & Mitigation System</div>
+            <div class="project-tech">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Emergency APIs</span>
+              <span class="tech-badge">Web</span>
+            </div>
+            <ul>
+              <li>Designed a disaster monitoring system utilizing live emergency APIs for real-time risk evaluation and SOS dispatch.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Experience & Leadership -->
+      <section class="glass">
+        <h2 class="section-title">Leadership & Experience</h2>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="role-title">Google Student Ambassador (GSA)</div>
+            <div class="role-meta">Malnad College of Engineering | Jan 2026 – Present | Hassan, Karnataka</div>
+            <ul>
+              <li>Organized and facilitated campus technical workshops and developer learning initiatives on Google AI tools for 100+ students.</li>
+              <li>Served as primary campus liaison integrating AI tools and workflows into academic routines and student engineering projects.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="role-title">GeeksforGeeks Campus Mantri (Lead)</div>
+            <div class="role-meta">Malnad College of Engineering | Jan 2026 – Present | Hassan, Karnataka</div>
+            <ul>
+              <li>Led campus technical community operations, spearheading developer events, coding contests, and hackathons.</li>
+              <li>Mentored peers on Data Structures, Algorithms, and technical interview preparation while promoting GeeksforGeeks resources.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="role-title">AI Research Intern</div>
+            <div class="role-meta">Bharat Unnati Fellowship | Jan 2026 – May 2026 | Remote</div>
+            <ul>
+              <li>Programmed custom convolutional pipelines in PyTorch for image processing, boosting preprocessing efficiency.</li>
+              <li>Optimized model inference latency across custom deep learning architectures for real-time deployment environments.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Education & Achievements -->
+      <section class="glass">
+        <h2 class="section-title">Education & Achievements</h2>
         
-        <!-- TECHNICAL SKILLS SECTION -->
-        <section id="skills">
-            <h2 class="section-title">⚡ Technical Expertise</h2>
-            <div class="grid-cards">
-                <div class="glass-card">
-                    <h3 class="card-heading">AI & Machine Learning</h3>
-                    <div class="badge-flex">
-                        <span class="badge">Deep Learning</span>
-                        <span class="badge">ResNet-18</span>
-                        <span class="badge">Neural Networks</span>
-                        <span class="badge">PyTorch</span>
-                        <span class="badge">3D/2D Brain Imaging</span>
-                    </div>
-                </div>
-                <div class="glass-card">
-                    <h3 class="card-heading">Web Development</h3>
-                    <div class="badge-flex">
-                     
-
-                        <span class="badge">Flask</span>
-                        
-                        <span class="badge">REST APIs</span>
-                    </div>
-                </div>
-                <div class="glass-card">
-                    <h3 class="card-heading">Programming Languages</h3>
-                    <div class="badge-flex">
-                        <span class="badge">HTML</span>
-                        <span class="badge">CSS</span>
-                        <span class="badge">Python</span>
-                        <span class="badge">Java</span>
-                        <span class="badge">SQL</span>
-                        <span class="badge">C</span>
-                    </div>
-                </div>
-                <div class="glass-card">
-                    <h3 class="card-heading">Automation & Tools</h3>
-                    <div class="badge-flex">
-                        <span class="badge">n8n</span>
-                        <span class="badge">Git</span>
-                        <span class="badge">GitHub</span>
-                        <span class="badge">VS Code</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- EXPERIENCE TIMELINE SECTION -->
-        <section id="experience">
-            <h2 class="section-title">💼 Experience & Leadership</h2>
-            <div class="timeline">
-                
-                <div class="timeline-card">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-header">
-                        <h3 class="timeline-title">Paytm <span>— Brand Campus Ambassador</span></h3>
-                        <span class="timeline-time">2024 – Present</span>
-                    </div>
-                    <div class="timeline-loc">Hassan, Karnataka, India</div>
-                    <p class="timeline-body">• Driving strategic regional student engagement initiatives, spreading digital financial awareness infrastructure across targeted collegiate loops.</p>
-                </div>
-
-                <div class="timeline-card">
-                    <div class="timeline-dot" style="background: var(--neon-cyan); box-shadow: 0 0 12px var(--neon-cyan);"></div>
-                    <div class="timeline-header">
-                        <h3 class="timeline-title">Campus Mantri (Campus Lead) <span>— GeeksforGeeks</span></h3>
-                        <span class="timeline-time">Jan 2024 – Present</span>
-                    </div>
-                    <div class="timeline-loc">Hassan, IN</div>
-                    <p class="timeline-body">• Serving as the official campus lead to drive student engagement and bootstrap modern coding cultures.</p>
-                    <p class="timeline-body">• Organizing regional programming events, technical bootcamps, and streaming core educational tracks.</p>
-                </div>
-
-                <div class="timeline-card">
-                    <div class="timeline-dot" style="background: var(--neon-blue); box-shadow: 0 0 12px var(--neon-blue);"></div>
-                    <div class="timeline-header">
-                        <h3 class="timeline-title">Google Student Ambassador (GSA) <span>— Campus Lead</span></h3>
-                        <span class="timeline-time">Jan 2024 – Present</span>
-                    </div>
-                    <div class="timeline-loc">Hassan, IN // Ambassador ID: 2941</div>
-                    <p class="timeline-body">• Orchestrating practical developer workshops and localized skill-building programs centered on modern tools.</p>
-                </div>
-
-                <div class="timeline-card">
-                    <div class="timeline-dot" style="background: var(--neon-purple); box-shadow: 0 0 12px var(--neon-purple);"></div>
-                    <div class="timeline-header">
-                        <h3 class="timeline-title">AI Research Intern <span>— Bharat Unnati Fellowship</span></h3>
-                        <span class="timeline-time">Jan 2024 – May 2024</span>
-                    </div>
-                    <div class="timeline-loc">Remote</div>
-                    <p class="timeline-body">• Programmed scalable convolutional pipelines and optimized deep learning architectures for production inference runtime.</p>
-                </div>
-
-            </div>
-
-            <h4 class="additional-heading">Additional Core Internships</h4>
-            <div class="mini-grid">
-                <div class="mini-card">
-                    <h4>Cognifyz Technologies</h4>
-                    <div class="mini-role">Machine Learning Intern</div>
-                    <p class="mini-text">Engineered diagnostic predictive engines using advanced statistical pipelines and structured data cleaning models.</p>
-                </div>
-                <div class="mini-card">
-                    <h4>Saiket Systems</h4>
-                    <div class="mini-role">Full Stack Intern</div>
-                    <p class="mini-text">Drafted clean presentation layers and structured RESTful back-end logic integrations for modern web engines.</p>
-                </div>
-                <div class="mini-card">
-                    <h4>CodeAlpha</h4>
-                    <div class="mini-role">Python Programming Intern</div>
-                    <p class="mini-text">Implemented foundational structural logic, system automation tasks, and streamlined core utility scripts.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECTS SECTION -->
-        <section id="projects">
-            <h2 class="section-title">🚀 Academic & Technical Projects</h2>
-            <div class="grid-cards">
-                
-                <div class="glass-card project-card">
-                    <div>
-                        <div class="project-title-row">
-                            <h3 class="project-title">AI Health & Nutrition Monitor</h3>
-                            <span class="project-tag" style="background: rgba(34, 211, 238, 0.1); color: var(--neon-cyan);">Full-Stack</span>
-                        </div>
-                        <p class="project-desc">Engineered a monitoring ecosystem analyzing structural caloric, micro/macro nutrient, and live fluid intake levels. Deployed automated adjustment tracking shifts in baseline body weight metrics to instantly prescribe customized nutrition edits, workouts, and target physical activities.</p>
-                    </div>
-                    <div class="project-foot">Python • Nutrition API • Full-Stack</div>
-                </div>
-
-                <div class="glass-card project-card">
-                    <div>
-                        <div class="project-title-row">
-                            <h3 class="project-title">Brain Disorder & Tumor Segmentation Engine</h3>
-                            <span class="project-tag" style="background: rgba(45, 212, 191, 0.1); color: var(--neon-teal);">Computer Vision</span>
-                        </div>
-                        <p class="project-desc">Architected a medical computer vision engine to process raw MRI datasets, isolating 3D/2D infection arrays through deep convolutional tracking pipelines.</p>
-                    </div>
-                    <div class="project-foot">Python • PyTorch • ResNet-18</div>
-                </div>
-
-                <div class="glass-card project-card">
-                    <div>
-                        <div class="project-title-row">
-                            <h3 class="project-title">AI Precision Agriculture Engine</h3>
-                            <span class="project-tag" style="background: rgba(45, 212, 191, 0.1); color: var(--neon-teal);">Deep Learning</span>
-                        </div>
-                        <p class="project-desc">Developed an end-to-end diagnosis application providing deep automated leaf classification alongside localized preventive analytics.</p>
-                    </div>
-                    <div class="project-foot">Python • Flask • Deep Learning</div>
-                </div>
-
-                <div class="glass-card project-card">
-                    <div>
-                        <div class="project-title-row">
-                            <h3 class="project-title">Smart Transport Logistics Platform</h3>
-                            <span class="project-tag" style="background: rgba(168, 85, 247, 0.1); color: var(--neon-purple);">Web Tech</span>
-                        </div>
-                        <p class="project-desc">Wired a localized dual-language (Kannada/English) logistics engine linking agricultural suppliers straight to regional logistics lines.</p>
-                    </div>
-                    <div class="project-foot">Web Tech • SQL</div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- EDUCATION SECTION -->
-        <section id="education">
-            <h2 class="section-title">🎓 Academic History</h2>
-            <div class="glass-card edu-flex">
-                
-                <div class="edu-item">
-                    <div>
-                        <h3 class="edu-title">Malnad College of Engineering</h3>
-                        <p class="edu-sub">B.E. in Computer Science (Artificial Intelligence & Machine Learning) — Pursuing</p>
-                        <div class="cgpa">Current CGPA: 8.4</div>
-                    </div>
-                    <div class="edu-meta">
-                        <div style="color: var(--text-primary);">Hassan, Karnataka</div>
-                        <div style="color: var(--text-muted); margin-top: 4px;">2023 – 2027</div>
-                    </div>
-                </div>
-                
-                <div style="border-top: 1px solid rgba(255, 255, 255, 0.05); margin: 8px 0;"></div>
-
-                <div class="edu-item">
-                    <div>
-                        <h3 class="edu-title">Vijaya Vittala College</h3>
-                        <p class="edu-sub">Class XII (PUC)</p>
-                        <div class="cgpa" style="background: rgba(52, 211, 153, 0.1); color: #34d399;">Agg: 94%</div>
-                    </div>
-                    <div class="edu-meta">
-                        <div style="color: var(--text-primary);">Mysore, Karnataka</div>
-                        <div style="color: var(--text-muted); margin-top: 4px;">2021 – 2023</div>
-                    </div>
-                </div>
-
-                <div style="border-top: 1px solid rgba(255, 255, 255, 0.05); margin: 8px 0;"></div>
-
-                <div class="edu-item">
-                    <div>
-                        <h3 class="edu-title">Navodaya Junior College</h3>
-                        <p class="edu-sub">Class X (SSLC)</p>
-                        <div class="cgpa" style="background: rgba(52, 211, 153, 0.1); color: #34d399;">Agg: 96%</div>
-                    </div>
-                    <div class="edu-meta">
-                        <div style="color: var(--text-primary);">Channarayapatna, Karnataka</div>
-                        <div style="color: var(--text-muted); margin-top: 4px;">Passed 2021</div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ACCOMPLISHMENTS & LANGUAGES -->
-        <div class="split-box-container">
-            <div class="glass-card split-box">
-                <h3 style="margin: 0 0 16px 0; font-size: 16px; color: var(--text-primary);">🏆 Key Accomplishments</h3>
-                <ul style="padding-left: 16px; margin: 0; color: var(--text-secondary); font-size: 14.5px; display: flex; flex-direction: column; gap: 10px; line-height: 1.5;">
-                    <li>Internal Finalist at <strong>Smart India Hackathon (SIH), 2023</strong></li>
-                    <li>NCC A-Certificate Certified Practitioner</li>
-                </ul>
-            </div>
-            <div class="glass-card split-box">
-                <h3 style="margin: 0 0 16px 0; font-size: 16px; color: var(--text-primary);">🌐 Languages Fluency</h3>
-                <div class="badge-flex" style="margin-top: 12px;">
-                    <span class="badge" style="border-radius: 20px;">Kannada</span>
-                    <span class="badge" style="border-radius: 20px;">English</span>
-                    <span class="badge" style="border-radius: 20px;">Hindi</span>
-                </div>
-            </div>
+        <div class="edu-grid">
+          <div class="edu-card">
+            <div class="edu-title">Malnad College of Engineering</div>
+            <div class="edu-subtitle">B.E. in Computer Science (AI & ML)</div>
+            <div class="edu-score">Status: Pursuing</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-title">Vijaya Vittala College</div>
+            <div class="edu-subtitle">Class XII (PUC) - Mysuru</div>
+            <div class="edu-score">Score: 94%</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-title">Navodaya Junior College</div>
+            <div class="edu-subtitle">Class X (SSLC) - Channarayapatna</div>
+            <div class="edu-score">Score: 96%</div>
+          </div>
         </div>
 
-        <!-- INTEGRATED FORMBOX INQUIRY FORWARDING SYSTEM -->
-        <section id="contact">
-            <h2 class="section-title">✉️ Let's Connect</h2>
-            <div class="glass-card query-box">
-                <!-- IMPORTANT: Replace YOUR_FORMSPREE_ID with the exact key Formspree provides you -->
-                <form action="https://formspree.io/f/mdardppa" method="POST">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="visitor_name" class="form-input" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="_replyto" class="form-input" placeholder="john@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message / Inquiry Details</label>
-                        <textarea id="message" name="message" class="form-input" placeholder="Hi Lokesh, I would love to collaborate on a new project..." required></textarea>
-                    </div>
-                    
-                    <!-- Meta Subjects configuration -->
-                    <input type="hidden" name="_subject" value="New Portfolio Inquiry Notification">
-                    
-                    <button type="submit" class="submit-btn">Send Inquiry Securely</button>
-                </form>
-            </div>
-        </section>
+        <div class="achievements">
+          <div class="achievement-badge">🏆 Participant, Smart India Hackathon (SIH 4.0), 2025</div>
+          <div class="achievement-badge">🎖️ Certified NCC A-Certificate</div>
+        </div>
+      </section>
 
-    </main>
+    </div>
 
-    <!-- FOOTER MODULE -->
-    <footer>
-        &copy; 2024 Lokesh MM.
-    </footer>
+  </div>
+
+  <script>
+    function downloadPDF() {
+      const element = document.getElementById('portfolio-resume');
+      const opt = {
+        margin:       [0.4, 0.4, 0.4, 0.4],
+        filename:     'Lokesh_MM_Resume.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true, logging: false },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+
+      html2pdf().set(opt).from(element).save();
+    }
+  </script>
 
 </body>
 </html>
