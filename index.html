@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lokesh Marenahalli Manjunath | Developer Portfolio</title>
+  <title>Lokesh Marenahalli Manjunath | AI Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f172a;
-      --surface: #1e293b;
-      --surface-border: #334155;
-      --primary: #38bdf8;
+      --bg-dark: #070b19;
+      --card-bg: #0f172a;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary-cyan: #00f2fe;
+      --primary-magenta: #d946ef;
+      --gradient-text: linear-gradient(135deg, #00f2fe 0%, #d946ef 100%);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --card-bg: #182238;
-      --chip-bg: rgba(56, 189, 248, 0.1);
-      --chip-border: rgba(56, 189, 248, 0.25);
+      --tag-bg: rgba(0, 242, 254, 0.08);
+      --tag-border: rgba(0, 242, 254, 0.25);
     }
 
     * {
@@ -24,458 +28,527 @@
     }
 
     body {
-      background-color: var(--bg);
+      background-color: var(--bg-dark);
       color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       line-height: 1.6;
-      padding: 2rem 1rem;
+      padding: 3rem 1.5rem;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(217, 70, 239, 0.08) 0%, transparent 40%);
+      background-attachment: fixed;
     }
 
-    .portfolio-container {
-      max-width: 1000px;
+    .portfolio-wrapper {
+      max-width: 1050px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
-    /* Hero & Profile Section */
+    /* Hero Header Component */
     .hero-card {
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      border-radius: 20px;
-      padding: 2.5rem 2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 3.5rem 2rem;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
 
-    .profile-photo {
-      width: 120px;
-      height: 120px;
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-text);
+    }
+
+    .avatar-ring {
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), #0284c7);
-      color: #0f172a;
-      font-size: 2.5rem;
-      font-weight: 800;
+      background: var(--gradient-text);
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 1.5rem auto;
-      border: 4px solid var(--surface-border);
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+      padding: 3px;
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
     }
 
-    .hero-name {
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      background: var(--bg-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 2.2rem;
       font-weight: 800;
-      color: var(--text-main);
-      letter-spacing: -0.02em;
+      color: var(--primary-cyan);
+    }
+
+    .full-name {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.03em;
       margin-bottom: 0.5rem;
       text-transform: uppercase;
     }
 
-    .hero-subtitle {
-      font-size: 1.1rem;
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 1.5rem;
+    .hero-tagline {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      max-width: 750px;
+      margin: 0 auto 1.75rem auto;
     }
 
-    .contact-bar {
+    .contact-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
-      font-size: 0.9rem;
-    }
-
-    .contact-badge {
-      background: var(--card-bg);
-      border: 1px solid var(--surface-border);
-      color: var(--text-muted);
-      padding: 0.5rem 1rem;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: border-color 0.2s ease, color 0.2s ease;
-    }
-
-    .contact-badge:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    /* Section Component Styling */
-    .section-card {
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .section-header {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
       gap: 0.75rem;
     }
 
-    .section-header::before {
-      content: '';
-      width: 8px;
-      height: 20px;
-      background: var(--primary);
-      border-radius: 4px;
+    .pill-badge {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 0.55rem 1.25rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.25s ease;
     }
 
-    /* About Me */
-    .bio-text {
-      font-size: 1rem;
-      color: #cbd5e1;
+    .pill-badge:hover {
+      border-color: var(--primary-cyan);
+      color: var(--primary-cyan);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+    }
+
+    /* Section Card Dashboard Styling */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 2.25rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .section-header {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .section-header-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      background: var(--gradient-text);
+    }
+
+    /* About Me Bio */
+    .bio-box {
+      font-size: 1.05rem;
+      color: var(--text-muted);
       line-height: 1.8;
+      background: rgba(0, 0, 0, 0.25);
+      border-left: 4px solid var(--primary-cyan);
+      padding: 1.5rem;
+      border-radius: 0 12px 12px 0;
     }
 
     /* Skills Grid */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 1.25rem;
     }
 
     .skill-box {
-      background: var(--card-bg);
-      border: 1px solid var(--surface-border);
-      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
       padding: 1.25rem;
     }
 
-    .skill-title {
-      font-size: 0.9rem;
+    .skill-category-title {
+      font-size: 0.85rem;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--primary-cyan);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
     }
 
-    .tag-container {
+    .chips-flex {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
     }
 
-    .skill-tag {
-      background: var(--chip-bg);
-      border: 1px solid var(--chip-border);
-      color: var(--primary);
-      padding: 0.3rem 0.75rem;
-      border-radius: 6px;
+    .tech-chip {
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--primary-cyan);
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
     }
 
-    /* Spoken Languages */
-    .languages-row {
+    /* Spoken Languages Section */
+    .spoken-languages-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
     }
 
     .lang-card {
-      background: var(--card-bg);
-      border: 1px solid var(--surface-border);
-      padding: 0.6rem 1.25rem;
-      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--card-border);
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
       font-weight: 600;
       color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    /* Projects Grid */
+    .lang-card::before {
+      content: '•';
+      color: var(--primary-magenta);
+      font-size: 1.2rem;
+    }
+
+    /* Featured Projects Grid */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
     }
 
     .project-card {
-      background: var(--card-bg);
-      border: 1px solid var(--surface-border);
-      border-radius: 12px;
-      padding: 1.5rem;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.75rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: border-color 0.2s ease;
+      transition: all 0.25s ease;
     }
 
     .project-card:hover {
-      border-color: var(--primary);
+      border-color: rgba(0, 242, 254, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 242, 254, 0.1);
     }
 
-    .project-name {
-      font-size: 1.1rem;
+    .project-title {
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 0.5rem;
     }
 
-    .project-tech {
+    .project-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
-    .project-desc {
+    .project-tag {
+      font-size: 0.75rem;
+      background: rgba(217, 70, 239, 0.1);
+      border: 1px solid rgba(217, 70, 239, 0.25);
+      color: var(--primary-magenta);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .project-bullets {
+      list-style-type: none;
       font-size: 0.9rem;
       color: var(--text-muted);
-      list-style-type: none;
     }
 
-    .project-desc li {
+    .project-bullets li {
       margin-bottom: 0.5rem;
       position: relative;
-      padding-left: 1.2rem;
+      padding-left: 1.25rem;
     }
 
-    .project-desc li::before {
+    .project-bullets li::before {
       content: '▹';
       position: absolute;
       left: 0;
-      color: var(--primary);
+      color: var(--primary-cyan);
     }
 
-    /* Achievements & Experience Grid */
-    .timeline-list {
+    /* Experience Timeline */
+    .experience-list {
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
     }
 
-    .timeline-item {
-      background: var(--card-bg);
-      border: 1px solid var(--surface-border);
-      border-radius: 12px;
-      padding: 1.25rem;
+    .experience-card {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.5rem;
     }
 
-    .item-role {
-      font-size: 1.05rem;
+    .exp-title {
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--text-main);
     }
 
-    .item-sub {
-      font-size: 0.85rem;
-      color: var(--primary);
+    .exp-sub {
+      font-size: 0.875rem;
+      color: var(--primary-cyan);
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
-    .item-bullets {
-      font-size: 0.9rem;
-      color: var(--text-muted);
+    .exp-bullets {
       padding-left: 1.2rem;
+      font-size: 0.925rem;
+      color: var(--text-muted);
     }
 
-    .item-bullets li {
-      margin-bottom: 0.3rem;
+    .exp-bullets li {
+      margin-bottom: 0.4rem;
     }
 
-    .badge-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-
-    .achievement-chip {
-      background: rgba(52, 211, 153, 0.1);
-      border: 1px solid rgba(52, 211, 153, 0.3);
-      color: #34d399;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    /* Education Table */
+    /* Schoolings & Marks Table */
     .edu-table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 0.5rem;
+      border-radius: 12px;
       overflow: hidden;
     }
 
     .edu-table th {
-      background-color: var(--card-bg);
-      color: var(--primary);
+      background-color: rgba(0, 0, 0, 0.4);
+      color: var(--primary-cyan);
       font-weight: 700;
       text-align: left;
-      padding: 0.75rem 1rem;
+      padding: 0.85rem 1rem;
       font-size: 0.85rem;
-      border: 1px solid var(--surface-border);
+      border: 1px solid var(--card-border);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .edu-table td {
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--surface-border);
-      font-size: 0.9rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--card-border);
+      font-size: 0.925rem;
       color: var(--text-main);
+      background: rgba(0, 0, 0, 0.15);
     }
 
-    .marks-highlight {
-      color: var(--primary);
+    .mark-badge {
+      color: var(--primary-cyan);
       font-weight: 700;
+    }
+
+    .achievements-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .achievement-card {
+      background: rgba(52, 211, 153, 0.08);
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      color: #34d399;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.875rem;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
 
-  <div class="portfolio-container">
+  <div class="portfolio-wrapper">
 
-    <!-- Hero Header / Introduction Section -->
+    <!-- Hero Profile Header -->
     <header class="hero-card">
-      <div class="profile-photo">LMM</div>
-      <h1 class="hero-name">LOKESH MARENAHALLI MANJUNATH</h1>
-      <p class="hero-subtitle">Computer Science (AI & ML) Student | Google Student Ambassador | AI Developer</p>
-      <div class="contact-bar">
-        <span class="contact-badge">📍 Hassan, Karnataka</span>
-        <a href="tel:+919108367516" class="contact-badge">📞 +91 9108367516</a>
-        <a href="mailto:lokeshmmankith@gmail.com" class="contact-badge">✉️ lokeshmmankith@gmail.com</a>
-        <a href="https://linkedin.com/in/lokesh-m-m-ankith" target="_blank" class="contact-badge">🔗 LinkedIn</a>
-        <a href="https://github.com/Lokesh206" target="_blank" class="contact-badge">💻 GitHub</a>
+      <div class="avatar-ring">
+        <div class="avatar-inner">LM</div>
+      </div>
+      <h1 class="full-name">LOKESH MARENAHALLI MANJUNATH</h1>
+      <p class="hero-tagline">Computer Science (AI & ML) Student &bull; Google Student Ambassador &bull; AI Developer</p>
+      
+      <div class="contact-row">
+        <span class="pill-badge">📍 Hassan, Karnataka</span>
+        <a href="tel:+919108367516" class="pill-badge">📞 +91 9108367516</a>
+        <a href="mailto:lokeshmmankith@gmail.com" class="pill-badge">✉️ lokeshmmankith@gmail.com</a>
+        <a href="https://linkedin.com/in/lokesh-m-m-ankith" target="_blank" class="pill-badge">🔗 LinkedIn</a>
+        <a href="https://github.com/Lokesh206" target="_blank" class="pill-badge">💻 GitHub</a>
       </div>
     </header>
 
     <!-- Description / About Me -->
     <section class="section-card">
-      <h2 class="section-header">About Me</h2>
-      <p class="bio-text">
-        I am a dedicated Computer Science engineering student specializing in Artificial Intelligence and Machine Learning at Malnad College of Engineering. As a Google Student Ambassador and GeeksforGeeks Campus Mantri, I lead campus developer initiatives and integrate AI tools into academic projects. My technical expertise focuses on deep learning pipelines, computer vision, and full-stack web applications, with hands-on experience engineering practical AI solutions for healthcare diagnostic imaging, precision agriculture, and emergency response management.
-      </p>
+      <h2 class="section-header">
+        <span class="section-header-dot"></span> About Me
+      </h2>
+      <div class="bio-box">
+        I am an ambitious Computer Science engineering undergraduate specializing in Artificial Intelligence and Machine Learning at Malnad College of Engineering. As a Google Student Ambassador and GeeksforGeeks Campus Mantri, I advocate for developer growth and technical education across campus. My domain expertise spans computer vision, deep learning pipelines, and full-stack web platforms, with a focus on building AI solutions for healthcare diagnostic imaging, precision agriculture, and emergency logistics.
+      </div>
     </section>
 
-    <!-- Technical Skills -->
+    <!-- Technical Skills Grid -->
     <section class="section-card">
-      <h2 class="section-header">Technical Skills</h2>
+      <h2 class="section-header">
+        <span class="section-header-dot"></span> Technical Capabilities
+      </h2>
       <div class="skills-grid">
         <div class="skill-box">
-          <div class="skill-title">Languages</div>
-          <div class="tag-container">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">C++</span>
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">C</span>
+          <div class="skill-category-title">Programming Languages</div>
+          <div class="chips-flex">
+            <span class="tech-chip">Python</span>
+            <span class="tech-chip">SQL</span>
+            <span class="tech-chip">C++</span>
+            <span class="tech-chip">Java</span>
+            <span class="tech-chip">C</span>
           </div>
         </div>
         <div class="skill-box">
-          <div class="skill-title">AI / ML & Computer Vision</div>
-          <div class="tag-container">
-            <span class="skill-tag">PyTorch</span>
-            <span class="skill-tag">Deep Learning</span>
-            <span class="skill-tag">ResNet-18</span>
-            <span class="skill-tag">Image Segmentation</span>
-            <span class="skill-tag">Medical Scans</span>
+          <div class="skill-category-title">AI / ML & Vision</div>
+          <div class="chips-flex">
+            <span class="tech-chip">PyTorch</span>
+            <span class="tech-chip">Deep Learning</span>
+            <span class="tech-chip">ResNet-18</span>
+            <span class="tech-chip">Image Segmentation</span>
+            <span class="tech-chip">Medical Scans</span>
           </div>
         </div>
         <div class="skill-box">
-          <div class="skill-title">Web & Backend</div>
-          <div class="tag-container">
-            <span class="skill-tag">Flask</span>
-            <span class="skill-tag">Spring Boot</span>
-            <span class="skill-tag">REST APIs</span>
-            <span class="skill-tag">HTML5</span>
-            <span class="skill-tag">CSS3</span>
-            <span class="skill-tag">JavaScript</span>
+          <div class="skill-category-title">Web & Backend</div>
+          <div class="chips-flex">
+            <span class="tech-chip">Flask</span>
+            <span class="tech-chip">Spring Boot</span>
+            <span class="tech-chip">REST APIs</span>
+            <span class="tech-chip">HTML5</span>
+            <span class="tech-chip">CSS3</span>
+            <span class="tech-chip">JavaScript</span>
           </div>
         </div>
         <div class="skill-box">
-          <div class="skill-title">Developer Tools</div>
-          <div class="tag-container">
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">GitHub</span>
-            <span class="skill-tag">VS Code</span>
+          <div class="skill-category-title">Developer Tools</div>
+          <div class="chips-flex">
+            <span class="tech-chip">Git</span>
+            <span class="tech-chip">GitHub</span>
+            <span class="tech-chip">VS Code</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Spoken Languages (Separate Section) -->
+    <!-- Spoken Languages (Standalone Section) -->
     <section class="section-card">
-      <h2 class="section-header">Languages Spoken</h2>
-      <div class="languages-row">
+      <h2 class="section-header">
+        <span class="section-header-dot"></span> Languages Spoken
+      </h2>
+      <div class="spoken-languages-grid">
         <div class="lang-card">Kannada</div>
         <div class="lang-card">English</div>
         <div class="lang-card">Hindi</div>
       </div>
     </section>
 
-    <!-- Key Projects -->
+    <!-- Featured Projects Grid -->
     <section class="section-card">
-      <h2 class="section-header">Projects</h2>
+      <h2 class="section-header">
+        <span class="section-header-dot"></span> Key Projects
+      </h2>
       <div class="projects-grid">
 
         <div class="project-card">
           <div>
-            <div class="project-name">Brain Disorder & Tumor Segmentation Engine</div>
-            <div class="project-tech">
-              <span class="skill-tag">PyTorch</span>
-              <span class="skill-tag">ResNet-18</span>
-              <span class="skill-tag">Computer Vision</span>
+            <div class="project-title">Brain Disorder & Tumor Segmentation Engine</div>
+            <div class="project-tags">
+              <span class="project-tag">PyTorch</span>
+              <span class="project-tag">ResNet-18</span>
+              <span class="project-tag">Computer Vision</span>
             </div>
-            <ul class="project-desc">
+            <ul class="project-bullets">
               <li>Engineered an AI diagnostic system processing MRI scans using ResNet-18 neural networks in PyTorch.</li>
-              <li>Implemented deep segmentation pipelines to map affected anatomical regions and pinpoint infection sites.</li>
+              <li>Implemented deep segmentation pipelines to accurately map affected anatomical regions and pinpoint infection sites.</li>
             </ul>
           </div>
         </div>
 
         <div class="project-card">
           <div>
-            <div class="project-name">AI Precision Agriculture Engine (Raitha Mitra AI)</div>
-            <div class="project-tech">
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">Flask</span>
-              <span class="skill-tag">Deep Learning</span>
+            <div class="project-title">AI Precision Agriculture Engine (Raitha Mitra AI)</div>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Flask</span>
+              <span class="project-tag">Deep Learning</span>
             </div>
-            <ul class="project-desc">
-              <li>Developed a full-stack crop disease detection platform evaluating uploaded leaf scans via image classification.</li>
-              <li>Integrated automated diagnostic heatmaps and disease prevention recommendations for farmers.</li>
+            <ul class="project-bullets">
+              <li>Developed a full-stack crop disease detection platform using image classification to evaluate uploaded leaf scans.</li>
+              <li>Integrated automated diagnostic heatmap generation and actionable disease prevention recommendations for farmers.</li>
             </ul>
           </div>
         </div>
 
         <div class="project-card">
           <div>
-            <div class="project-name">Smart Transport & Logistics Hub (Krishi Sarathi)</div>
-            <div class="project-tech">
-              <span class="skill-tag">Flask</span>
-              <span class="skill-tag">REST APIs</span>
-              <span class="skill-tag">Web Tech</span>
+            <div class="project-title">Smart Transport & Logistics Hub (Krishi Sarathi)</div>
+            <div class="project-tags">
+              <span class="project-tag">Flask</span>
+              <span class="project-tag">REST APIs</span>
+              <span class="project-tag">Web Tech</span>
             </div>
-            <ul class="project-desc">
-              <li>Built a bilingual (Kannada/English) web portal connecting local farmers directly with commercial transporters.</li>
-              <li>Streamlined agricultural logistics by facilitating real-time route matching and distribution tracking.</li>
+            <ul class="project-bullets">
+              <li>Built a bilingual (Kannada/English) web portal connecting local farmers directly with commercial transporters and traders.</li>
+              <li>Streamlined agricultural logistics by facilitating real-time route matching and secure distribution tracking.</li>
             </ul>
           </div>
         </div>
 
         <div class="project-card">
           <div>
-            <div class="project-name">Natural Disaster Detection & Mitigation System</div>
-            <div class="project-tech">
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">Emergency APIs</span>
-              <span class="skill-tag">Web Tech</span>
+            <div class="project-title">Natural Disaster Detection & Mitigation System</div>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Emergency APIs</span>
+              <span class="project-tag">Web Tech</span>
             </div>
-            <ul class="project-desc">
+            <ul class="project-bullets">
               <li>Designed a disaster monitoring system utilizing live emergency APIs for real-time risk evaluation and SOS dispatch.</li>
             </ul>
           </div>
@@ -486,31 +559,33 @@
 
     <!-- Leadership & Experience -->
     <section class="section-card">
-      <h2 class="section-header">Leadership & Work Experience</h2>
-      <div class="timeline-list">
+      <h2 class="section-header">
+        <span class="section-header-dot"></span> Leadership & Experience
+      </h2>
+      <div class="experience-list">
 
-        <div class="timeline-item">
-          <div class="item-role">Google Student Ambassador (GSA)</div>
-          <div class="item-sub">Malnad College of Engineering | Jan 2026 – Present | Hassan, Karnataka</div>
-          <ul class="item-bullets">
+        <div class="experience-card">
+          <div class="exp-title">Google Student Ambassador (GSA)</div>
+          <div class="exp-sub">Malnad College of Engineering | Jan 2026 – Present | Hassan, Karnataka</div>
+          <ul class="exp-bullets">
             <li>Organized and facilitated technical workshops on Google AI tools and workflows for 100+ engineering students.</li>
-            <li>Served as primary campus liaison integrating AI tools and developer resources into student engineering projects.</li>
+            <li>Served as primary campus liaison integrating AI tools and developer resources into student projects.</li>
           </ul>
         </div>
 
-        <div class="timeline-item">
-          <div class="item-role">GeeksforGeeks Campus Mantri (Lead)</div>
-          <div class="item-sub">Malnad College of Engineering | Jan 2026 – Present | Hassan, Karnataka</div>
-          <ul class="item-bullets">
+        <div class="experience-card">
+          <div class="exp-title">GeeksforGeeks Campus Mantri (Lead)</div>
+          <div class="exp-sub">Malnad College of Engineering | Jan 2026 – Present | Hassan, Karnataka</div>
+          <ul class="exp-bullets">
             <li>Led campus technical community operations, spearheading developer events, coding contests, and hackathons.</li>
             <li>Mentored peers on Data Structures, Algorithms, and technical interview preparation.</li>
           </ul>
         </div>
 
-        <div class="timeline-item">
-          <div class="item-role">AI Research Intern</div>
-          <div class="item-sub">Bharat Unnati Fellowship | Jan 2026 – May 2026 | Remote</div>
-          <ul class="item-bullets">
+        <div class="experience-card">
+          <div class="exp-title">AI Research Intern</div>
+          <div class="exp-sub">Bharat Unnati Fellowship | Jan 2026 – May 2026 | Remote</div>
+          <ul class="exp-bullets">
             <li>Programmed custom convolutional pipelines in PyTorch for image processing, boosting preprocessing efficiency.</li>
             <li>Optimized model inference latency across custom deep neural architectures for real-time deployment.</li>
           </ul>
@@ -519,14 +594,16 @@
       </div>
     </section>
 
-    <!-- Schoolings, Academic Marks & Achievements -->
+    <!-- Schoolings, Marks & Achievements -->
     <section class="section-card">
-      <h2 class="section-header">Schoolings & Marks</h2>
+      <h2 class="section-header">
+        <span class="section-header-dot"></span> Schoolings & Academic Marks
+      </h2>
       <table class="edu-table">
         <thead>
           <tr>
             <th>Institution</th>
-            <th>Qualification</th>
+            <th>Qualification / Program</th>
             <th>Location</th>
             <th>Marks / Status</th>
           </tr>
@@ -536,26 +613,26 @@
             <td><b>Malnad College of Engineering</b></td>
             <td>B.E. in Computer Science (AI & ML)</td>
             <td>Hassan, Karnataka</td>
-            <td><span class="marks-highlight">Pursuing</span></td>
+            <td><span class="mark-badge">Pursuing</span></td>
           </tr>
           <tr>
             <td><b>Vijaya Vittala College</b></td>
             <td>Class XII (PUC)</td>
             <td>Mysuru, Karnataka</td>
-            <td><span class="marks-highlight">94%</span></td>
+            <td><span class="mark-badge">94%</span></td>
           </tr>
           <tr>
             <td><b>Navodaya Junior College</b></td>
             <td>Class X (SSLC)</td>
             <td>Channarayapatna, Karnataka</td>
-            <td><span class="marks-highlight">96%</span></td>
+            <td><span class="mark-badge">96%</span></td>
           </tr>
         </tbody>
       </table>
 
-      <div class="badge-group">
-        <div class="achievement-chip">🏆 Participant, Smart India Hackathon (SIH 4.0), 2025</div>
-        <div class="achievement-chip">🎖️ Certified NCC A-Certificate</div>
+      <div class="achievements-row">
+        <div class="achievement-card">🏆 Participant, Smart India Hackathon (SIH 4.0), 2025</div>
+        <div class="achievement-card">🎖️ Certified NCC A-Certificate</div>
       </div>
     </section>
 
