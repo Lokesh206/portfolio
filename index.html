@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lokesh M. M. | Portfolio & Resume</title>
+  <title>Lokesh Marenahalli Manjunath | Developer Portfolio</title>
   <style>
     :root {
-      --bg-gradient: linear-gradient(135deg, #0b132b 0%, #1c2541 100%);
-      --card-bg: #ffffff;
-      --primary: #0b132b;
-      --accent: #00b4d8;
-      --accent-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-      --text-dark: #1e293b;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --tag-bg: #f0f9ff;
-      --tag-border: #bae6fd;
-      --tag-text: #0284c7;
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-border: #334155;
+      --primary: #38bdf8;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: #182238;
+      --chip-bg: rgba(56, 189, 248, 0.1);
+      --chip-border: rgba(56, 189, 248, 0.25);
     }
 
     * {
@@ -26,258 +24,284 @@
     }
 
     body {
-      background: var(--bg-gradient);
-      color: var(--text-dark);
+      background-color: var(--bg);
+      color: var(--text-main);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       line-height: 1.6;
-      padding: 2.5rem 1rem;
-      min-height: 100vh;
+      padding: 2rem 1rem;
     }
 
-    .container {
-      max-width: 920px;
+    .portfolio-container {
+      max-width: 1000px;
       margin: 0 auto;
-    }
-
-    /* Action / Download Bar */
-    .action-bar {
       display: flex;
-      justify-content: flex-end;
-      margin-bottom: 1.5rem;
+      flex-direction: column;
+      gap: 2rem;
     }
 
-    .download-btn {
-      background: var(--accent-gradient);
-      color: #0b132b;
-      font-weight: 700;
-      border: none;
-      padding: 0.85rem 1.75rem;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      text-decoration: none;
-      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
-      transition: all 0.25s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .download-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 242, 254, 0.45);
-    }
-
-    /* Main Resume Card */
-    .resume-card {
-      background: var(--card-bg);
+    /* Hero & Profile Section */
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
       border-radius: 20px;
-      padding: 3rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
-    /* Header Styling */
-    header {
-      border-bottom: 3px solid #f1f5f9;
-      padding-bottom: 1.75rem;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 0;
-      width: 100px;
-      height: 3px;
-      background: var(--accent-gradient);
-    }
-
-    h1 {
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #0284c7);
+      color: #0f172a;
       font-size: 2.5rem;
-      color: var(--primary);
       font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem auto;
+      border: 4px solid var(--surface-border);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    }
+
+    .hero-name {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
       text-transform: uppercase;
     }
 
-    .tagline {
-      font-size: 1.05rem;
-      color: #0284c7;
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--primary);
       font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
-    .contact-grid {
+    .contact-bar {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.25rem;
-      font-size: 0.875rem;
+      justify-content: center;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-badge {
+      background: var(--card-bg);
+      border: 1px solid var(--surface-border);
       color: var(--text-muted);
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .contact-item a {
-      color: #0284c7;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
       text-decoration: none;
-      font-weight: 500;
+      transition: border-color 0.2s ease, color 0.2s ease;
     }
 
-    .contact-item a:hover {
-      text-decoration: underline;
+    .contact-badge:hover {
+      border-color: var(--primary);
+      color: var(--primary);
     }
 
-    /* Section Headers */
-    section {
-      margin-bottom: 2rem;
+    /* Section Component Styling */
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .section-title {
-      font-size: 1.15rem;
-      font-weight: 800;
+    .section-header {
+      font-size: 1.3rem;
+      font-weight: 700;
       color: var(--primary);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-    }
-
-    .section-title::before {
-      content: '';
-      width: 6px;
-      height: 18px;
-      background: var(--accent-gradient);
-      border-radius: 3px;
-    }
-
-    .bio {
-      font-size: 0.95rem;
-      color: #334155;
-      line-height: 1.7;
-      background: #f8fafc;
-      padding: 1.25rem;
-      border-radius: 12px;
-      border-left: 4px solid #00b4d8;
-    }
-
-    /* Technical Skills Table */
-    .skills-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .skills-table tr {
-      border-bottom: 1px solid #f1f5f9;
-    }
-
-    .skills-table tr:last-child {
-      border-bottom: none;
-    }
-
-    .skills-table td {
-      padding: 0.6rem 0;
-      vertical-align: middle;
-      font-size: 0.925rem;
-    }
-
-    .skill-label {
-      font-weight: 700;
-      color: var(--primary);
-      width: 28%;
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      width: 72%;
-    }
-
-    .tag {
-      background: var(--tag-bg);
-      border: 1px solid var(--tag-border);
-      color: var(--tag-text);
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      font-size: 0.825rem;
-      font-weight: 600;
-    }
-
-    /* Spoken Languages Box */
-    .lang-container {
-      display: flex;
       gap: 0.75rem;
     }
 
-    .lang-badge {
-      background: #f1f5f9;
-      color: var(--primary);
-      font-weight: 600;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-size: 0.875rem;
-      border: 1px solid var(--border);
+    .section-header::before {
+      content: '';
+      width: 8px;
+      height: 20px;
+      background: var(--primary);
+      border-radius: 4px;
     }
 
-    /* Item Blocks (Experience & Projects) */
-    .item-block {
-      margin-bottom: 1.5rem;
-      background: #ffffff;
-      border: 1px solid var(--border);
-      padding: 1.25rem;
+    /* About Me */
+    .bio-text {
+      font-size: 1rem;
+      color: #cbd5e1;
+      line-height: 1.8;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-box {
+      background: var(--card-bg);
+      border: 1px solid var(--surface-border);
       border-radius: 12px;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      padding: 1.25rem;
     }
 
-    .item-block:hover {
-      border-color: #00b4d8;
-      box-shadow: 0 4px 12px rgba(0, 180, 216, 0.08);
-    }
-
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 0.25rem;
-    }
-
-    .item-title {
-      font-size: 1.05rem;
+    .skill-title {
+      font-size: 0.9rem;
       font-weight: 700;
       color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: var(--chip-bg);
+      border: 1px solid var(--chip-border);
+      color: var(--primary);
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* Spoken Languages */
+    .languages-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .lang-card {
+      background: var(--card-bg);
+      border: 1px solid var(--surface-border);
+      padding: 0.6rem 1.25rem;
+      border-radius: 10px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--primary);
+    }
+
+    .project-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      list-style-type: none;
+    }
+
+    .project-desc li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .project-desc li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+
+    /* Achievements & Experience Grid */
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .timeline-item {
+      background: var(--card-bg);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+
+    .item-role {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
     }
 
     .item-sub {
-      font-size: 0.875rem;
-      color: #0284c7;
+      font-size: 0.85rem;
+      color: var(--primary);
       font-weight: 600;
       margin-bottom: 0.5rem;
     }
 
-    .item-date {
-      font-size: 0.825rem;
-      color: var(--text-muted);
-      font-weight: 500;
-      white-space: nowrap;
-    }
-
-    ul.bullets {
-      padding-left: 1.2rem;
+    .item-bullets {
       font-size: 0.9rem;
+      color: var(--text-muted);
+      padding-left: 1.2rem;
     }
 
-    ul.bullets li {
-      margin-bottom: 0.35rem;
-      color: #334155;
+    .item-bullets li {
+      margin-bottom: 0.3rem;
+    }
+
+    .badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .achievement-chip {
+      background: rgba(52, 211, 153, 0.1);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      color: #34d399;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
     }
 
     /* Education Table */
@@ -285,281 +309,255 @@
       width: 100%;
       border-collapse: collapse;
       margin-top: 0.5rem;
-      border-radius: 8px;
       overflow: hidden;
     }
 
     .edu-table th {
-      background-color: #f1f5f9;
+      background-color: var(--card-bg);
       color: var(--primary);
       font-weight: 700;
       text-align: left;
-      padding: 0.6rem 0.85rem;
+      padding: 0.75rem 1rem;
       font-size: 0.85rem;
-      border: 1px solid var(--border);
+      border: 1px solid var(--surface-border);
     }
 
     .edu-table td {
-      padding: 0.6rem 0.85rem;
-      border: 1px solid var(--border);
-      font-size: 0.875rem;
-      color: #334155;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--surface-border);
+      font-size: 0.9rem;
+      color: var(--text-main);
     }
 
-    .achievement-badge {
-      display: inline-block;
-      margin-top: 0.75rem;
-      background: #ecfdf5;
-      border: 1px solid #a7f3d0;
-      color: #047857;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    /* Print Styles */
-    @media print {
-      body {
-        background: #ffffff;
-        padding: 0;
-      }
-      .action-bar {
-        display: none;
-      }
-      .resume-card {
-        box-shadow: none;
-        padding: 0;
-        border-radius: 0;
-      }
-      .item-block {
-        border: none;
-        padding: 0;
-        margin-bottom: 1rem;
-      }
+    .marks-highlight {
+      color: var(--primary);
+      font-weight: 700;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="portfolio-container">
 
-    <!-- Action Bar -->
-    <div class="action-bar">
-      <a href="Lokesh_MM_Resume.pdf" download="Lokesh_MM_Resume.pdf" class="download-btn">
-        📥 Download Resume PDF
-      </a>
-    </div>
+    <!-- Hero Header / Introduction Section -->
+    <header class="hero-card">
+      <div class="profile-photo">LMM</div>
+      <h1 class="hero-name">LOKESH MARENAHALLI MANJUNATH</h1>
+      <p class="hero-subtitle">Computer Science (AI & ML) Student | Google Student Ambassador | AI Developer</p>
+      <div class="contact-bar">
+        <span class="contact-badge">📍 Hassan, Karnataka</span>
+        <a href="tel:+919108367516" class="contact-badge">📞 +91 9108367516</a>
+        <a href="mailto:lokeshmmankith@gmail.com" class="contact-badge">✉️ lokeshmmankith@gmail.com</a>
+        <a href="https://linkedin.com/in/lokesh-m-m-ankith" target="_blank" class="contact-badge">🔗 LinkedIn</a>
+        <a href="https://github.com/Lokesh206" target="_blank" class="contact-badge">💻 GitHub</a>
+      </div>
+    </header>
 
-    <!-- Resume Card Container -->
-    <div class="resume-card">
+    <!-- Description / About Me -->
+    <section class="section-card">
+      <h2 class="section-header">About Me</h2>
+      <p class="bio-text">
+        I am a dedicated Computer Science engineering student specializing in Artificial Intelligence and Machine Learning at Malnad College of Engineering. As a Google Student Ambassador and GeeksforGeeks Campus Mantri, I lead campus developer initiatives and integrate AI tools into academic projects. My technical expertise focuses on deep learning pipelines, computer vision, and full-stack web applications, with hands-on experience engineering practical AI solutions for healthcare diagnostic imaging, precision agriculture, and emergency response management.
+      </p>
+    </section>
 
-      <!-- Header -->
-      <header>
-        <h1>Lokesh M M</h1>
-        <div class="tagline">Computer Science (AI & ML) Student | Google Student Ambassador | AI Developer</div>
-        <div class="contact-grid">
-          <span class="contact-item">📍 Hassan, Karnataka</span>
-          <span class="contact-item">📞 +91 9108367516</span>
-          <span class="contact-item">✉️ lokeshmmankith@gmail.com</span>
-          <span class="contact-item">🔗 <a href="https://linkedin.com/in/lokesh-m-m-ankith" target="_blank">linkedin.com/in/lokesh-m-m-ankith</a></span>
-          <span class="contact-item">💻 <a href="https://github.com/Lokesh206" target="_blank">github.com/Lokesh206</a></span>
-        </div>
-      </header>
-
-      <!-- Brief Description / About Me -->
-      <section>
-        <div class="section-title">Brief Description</div>
-        <p class="bio">
-          I am an ambitious Computer Science engineering undergraduate specializing in AI & ML at Malnad College of Engineering. As a Google Student Ambassador and GeeksforGeeks Campus Mantri, I advocate for developer growth and technical education across campus. My domain expertise spans computer vision, deep learning pipelines, and full-stack web platforms, with a focus on building AI solutions for healthcare diagnostic imaging, precision agriculture, and emergency logistics.
-        </p>
-      </section>
-
-      <!-- Technical Capabilities -->
-      <section>
-        <div class="section-title">Technical Capabilities</div>
-        <table class="skills-table">
-          <tr>
-            <td class="skill-label">Programming Languages:</td>
-            <td class="skill-tags">
-              <span class="tag">Python</span>
-              <span class="tag">SQL</span>
-              <span class="tag">C++</span>
-              <span class="tag">Java</span>
-              <span class="tag">C</span>
-            </td>
-          </tr>
-          <tr>
-            <td class="skill-label">AI / ML & Vision:</td>
-            <td class="skill-tags">
-              <span class="tag">PyTorch</span>
-              <span class="tag">Deep Learning</span>
-              <span class="tag">ResNet-18</span>
-              <span class="tag">Image Segmentation</span>
-              <span class="tag">Medical Scan Analysis</span>
-            </td>
-          </tr>
-          <tr>
-            <td class="skill-label">Web & Backend:</td>
-            <td class="skill-tags">
-              <span class="tag">Flask</span>
-              <span class="tag">Spring Boot</span>
-              <span class="tag">REST APIs</span>
-              <span class="tag">HTML5</span>
-              <span class="tag">CSS3</span>
-              <span class="tag">JavaScript</span>
-            </td>
-          </tr>
-          <tr>
-            <td class="skill-label">Developer Tools:</td>
-            <td class="skill-tags">
-              <span class="tag">Git</span>
-              <span class="tag">GitHub</span>
-              <span class="tag">VS Code</span>
-            </td>
-          </tr>
-        </table>
-      </section>
-
-      <!-- Languages Spoken (Standalone Section) -->
-      <section>
-        <div class="section-title">Languages Spoken</div>
-        <div class="lang-container">
-          <span class="lang-badge">Kannada</span>
-          <span class="lang-badge">English</span>
-          <span class="lang-badge">Hindi</span>
-        </div>
-      </section>
-
-      <!-- Experience & Leadership -->
-      <section>
-        <div class="section-title">Experience & Leadership</div>
-
-        <div class="item-block">
-          <div class="item-header">
-            <div class="item-title">Google Student Ambassador (GSA)</div>
-            <div class="item-date">Jan 2026 – Present | Hassan, KA</div>
+    <!-- Technical Skills -->
+    <section class="section-card">
+      <h2 class="section-header">Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-box">
+          <div class="skill-title">Languages</div>
+          <div class="tag-container">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C</span>
           </div>
-          <div class="item-sub">Malnad College of Engineering</div>
-          <ul class="bullets">
+        </div>
+        <div class="skill-box">
+          <div class="skill-title">AI / ML & Computer Vision</div>
+          <div class="tag-container">
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Deep Learning</span>
+            <span class="skill-tag">ResNet-18</span>
+            <span class="skill-tag">Image Segmentation</span>
+            <span class="skill-tag">Medical Scans</span>
+          </div>
+        </div>
+        <div class="skill-box">
+          <div class="skill-title">Web & Backend</div>
+          <div class="tag-container">
+            <span class="skill-tag">Flask</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+          </div>
+        </div>
+        <div class="skill-box">
+          <div class="skill-title">Developer Tools</div>
+          <div class="tag-container">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spoken Languages (Separate Section) -->
+    <section class="section-card">
+      <h2 class="section-header">Languages Spoken</h2>
+      <div class="languages-row">
+        <div class="lang-card">Kannada</div>
+        <div class="lang-card">English</div>
+        <div class="lang-card">Hindi</div>
+      </div>
+    </section>
+
+    <!-- Key Projects -->
+    <section class="section-card">
+      <h2 class="section-header">Projects</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div>
+            <div class="project-name">Brain Disorder & Tumor Segmentation Engine</div>
+            <div class="project-tech">
+              <span class="skill-tag">PyTorch</span>
+              <span class="skill-tag">ResNet-18</span>
+              <span class="skill-tag">Computer Vision</span>
+            </div>
+            <ul class="project-desc">
+              <li>Engineered an AI diagnostic system processing MRI scans using ResNet-18 neural networks in PyTorch.</li>
+              <li>Implemented deep segmentation pipelines to map affected anatomical regions and pinpoint infection sites.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <div class="project-name">AI Precision Agriculture Engine (Raitha Mitra AI)</div>
+            <div class="project-tech">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Flask</span>
+              <span class="skill-tag">Deep Learning</span>
+            </div>
+            <ul class="project-desc">
+              <li>Developed a full-stack crop disease detection platform evaluating uploaded leaf scans via image classification.</li>
+              <li>Integrated automated diagnostic heatmaps and disease prevention recommendations for farmers.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <div class="project-name">Smart Transport & Logistics Hub (Krishi Sarathi)</div>
+            <div class="project-tech">
+              <span class="skill-tag">Flask</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">Web Tech</span>
+            </div>
+            <ul class="project-desc">
+              <li>Built a bilingual (Kannada/English) web portal connecting local farmers directly with commercial transporters.</li>
+              <li>Streamlined agricultural logistics by facilitating real-time route matching and distribution tracking.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <div class="project-name">Natural Disaster Detection & Mitigation System</div>
+            <div class="project-tech">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Emergency APIs</span>
+              <span class="skill-tag">Web Tech</span>
+            </div>
+            <ul class="project-desc">
+              <li>Designed a disaster monitoring system utilizing live emergency APIs for real-time risk evaluation and SOS dispatch.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Leadership & Experience -->
+    <section class="section-card">
+      <h2 class="section-header">Leadership & Work Experience</h2>
+      <div class="timeline-list">
+
+        <div class="timeline-item">
+          <div class="item-role">Google Student Ambassador (GSA)</div>
+          <div class="item-sub">Malnad College of Engineering | Jan 2026 – Present | Hassan, Karnataka</div>
+          <ul class="item-bullets">
             <li>Organized and facilitated technical workshops on Google AI tools and workflows for 100+ engineering students.</li>
-            <li>Served as primary campus liaison integrating AI tools and developer resources into student projects.</li>
+            <li>Served as primary campus liaison integrating AI tools and developer resources into student engineering projects.</li>
           </ul>
         </div>
 
-        <div class="item-block">
-          <div class="item-header">
-            <div class="item-title">GeeksforGeeks Campus Mantri (Lead)</div>
-            <div class="item-date">Jan 2026 – Present | Hassan, KA</div>
-          </div>
-          <div class="item-sub">Malnad College of Engineering</div>
-          <ul class="bullets">
+        <div class="timeline-item">
+          <div class="item-role">GeeksforGeeks Campus Mantri (Lead)</div>
+          <div class="item-sub">Malnad College of Engineering | Jan 2026 – Present | Hassan, Karnataka</div>
+          <ul class="item-bullets">
             <li>Led campus technical community operations, spearheading developer events, coding contests, and hackathons.</li>
             <li>Mentored peers on Data Structures, Algorithms, and technical interview preparation.</li>
           </ul>
         </div>
 
-        <div class="item-block">
-          <div class="item-header">
-            <div class="item-title">AI Research Intern</div>
-            <div class="item-date">Jan 2026 – May 2026 | Remote</div>
-          </div>
-          <div class="item-sub">Bharat Unnati Fellowship</div>
-          <ul class="bullets">
+        <div class="timeline-item">
+          <div class="item-role">AI Research Intern</div>
+          <div class="item-sub">Bharat Unnati Fellowship | Jan 2026 – May 2026 | Remote</div>
+          <ul class="item-bullets">
             <li>Programmed custom convolutional pipelines in PyTorch for image processing, boosting preprocessing efficiency.</li>
             <li>Optimized model inference latency across custom deep neural architectures for real-time deployment.</li>
           </ul>
         </div>
-      </section>
 
-      <!-- Key Projects -->
-      <section>
-        <div class="section-title">Key Projects</div>
+      </div>
+    </section>
 
-        <div class="item-block">
-          <div class="item-header">
-            <div class="item-title">Brain Disorder & Tumor Segmentation Engine</div>
-            <div class="item-date">PyTorch, ResNet-18, Computer Vision</div>
-          </div>
-          <ul class="bullets">
-            <li>Engineered an AI diagnostic system processing MRI scans using ResNet-18 neural networks in PyTorch.</li>
-            <li>Implemented deep segmentation pipelines to accurately map affected anatomical regions and pinpoint infection sites.</li>
-          </ul>
-        </div>
+    <!-- Schoolings, Academic Marks & Achievements -->
+    <section class="section-card">
+      <h2 class="section-header">Schoolings & Marks</h2>
+      <table class="edu-table">
+        <thead>
+          <tr>
+            <th>Institution</th>
+            <th>Qualification</th>
+            <th>Location</th>
+            <th>Marks / Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Malnad College of Engineering</b></td>
+            <td>B.E. in Computer Science (AI & ML)</td>
+            <td>Hassan, Karnataka</td>
+            <td><span class="marks-highlight">Pursuing</span></td>
+          </tr>
+          <tr>
+            <td><b>Vijaya Vittala College</b></td>
+            <td>Class XII (PUC)</td>
+            <td>Mysuru, Karnataka</td>
+            <td><span class="marks-highlight">94%</span></td>
+          </tr>
+          <tr>
+            <td><b>Navodaya Junior College</b></td>
+            <td>Class X (SSLC)</td>
+            <td>Channarayapatna, Karnataka</td>
+            <td><span class="marks-highlight">96%</span></td>
+          </tr>
+        </tbody>
+      </table>
 
-        <div class="item-block">
-          <div class="item-header">
-            <div class="item-title">AI Precision Agriculture Engine (Raitha Mitra AI)</div>
-            <div class="item-date">Python, Flask, Deep Learning</div>
-          </div>
-          <ul class="bullets">
-            <li>Developed a full-stack crop disease detection platform using image classification to evaluate uploaded leaf scans.</li>
-            <li>Integrated automated diagnostic heatmap generation and disease prevention recommendations for farmers.</li>
-          </ul>
-        </div>
-
-        <div class="item-block">
-          <div class="item-header">
-            <div class="item-title">Smart Transport & Logistics Hub (Krishi Sarathi)</div>
-            <div class="item-date">Flask, REST APIs, Web Tech</div>
-          </div>
-          <ul class="bullets">
-            <li>Built a bilingual (Kannada/English) web portal connecting local farmers directly with commercial transporters and traders.</li>
-            <li>Streamlined agricultural logistics by facilitating real-time route matching and distribution tracking.</li>
-          </ul>
-        </div>
-
-        <div class="item-block">
-          <div class="item-header">
-            <div class="item-title">Natural Disaster Detection & Mitigation System</div>
-            <div class="item-date">Python, Emergency APIs, Web</div>
-          </div>
-          <ul class="bullets">
-            <li>Designed a disaster monitoring system utilizing live emergency APIs for real-time risk evaluation and SOS dispatch.</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Education & Achievements -->
-      <section>
-        <div class="section-title">Education & Achievements</div>
-        <table class="edu-table">
-          <thead>
-            <tr>
-              <th>Institution</th>
-              <th>Degree / Qualification</th>
-              <th>Location</th>
-              <th>Score / Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><b>Malnad College of Engineering</b></td>
-              <td>B.E. in Computer Science (AI & ML)</td>
-              <td>Hassan, KA</td>
-              <td>Pursuing</td>
-            </tr>
-            <tr>
-              <td><b>Vijaya Vittala College</b></td>
-              <td>Class XII (PUC)</td>
-              <td>Mysuru, KA</td>
-              <td>94%</td>
-            </tr>
-            <tr>
-              <td><b>Navodaya Junior College</b></td>
-              <td>Class X (SSLC)</td>
-              <td>Channarayapatna, KA</td>
-              <td>96%</td>
-            </tr>
-          </tbody>
-        </table>
-        
-        <div class="achievement-badge">
-          🏆 Participant, Smart India Hackathon (SIH 4.0), 2025 &nbsp;|&nbsp; 🎖️ Certified NCC A-Certificate
-        </div>
-      </section>
-
-    </div>
+      <div class="badge-group">
+        <div class="achievement-chip">🏆 Participant, Smart India Hackathon (SIH 4.0), 2025</div>
+        <div class="achievement-chip">🎖️ Certified NCC A-Certificate</div>
+      </div>
+    </section>
 
   </div>
 
